@@ -1,5 +1,5 @@
 # University-Calendar
-Project for administrative Internship at IT department of Innopolis University# university-calendar
+Project for administrative Internship at IT department of Innopolis University
 
 ## Project setup
 ```
