@@ -1,0 +1,40 @@
+.home,
+.nav,
+.aside,
+.main {
+    margin: 0;
+}
+
+.home {
+    width: 100vm;
+    height: 100vh;
+}
+
+.nav {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    width: 100vm;
+    height: 73px;
+    border-bottom: 2px solid #92ba1f;
+}
+
+.main-container {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    height: calc(100vh - 75px);
+}
+
+.aside {
+    flex: 1;
+    border-right: 1px inset #dadce0;
+}
+
+.main {
+    flex: 4;
+}

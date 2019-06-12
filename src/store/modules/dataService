@@ -1,0 +1,28 @@
+const state = {
+  days: [false, false, false, false, false, false, false]
+};
+
+const getters = {
+  getDayStatus: state => {
+    return state.days;
+  }
+};
+
+const mutations = {
+  setDayStatus: (state, payload) => {
+    state.days = payload;
+  }
+};
+
+const actions = {
+  setDayStatus: async (context, payload) => {
+    context.commit("set_day_status", payload);
+  }
+};
+
+export default {
+  state,
+  getters,
+  mutations,
+  actions
+};
