@@ -1,0 +1,55 @@
+@font-face {
+    font-family: "Elektra";
+    src: url("../fonts/Elektra-Light.otf");
+    font-style: normal;
+    font-weight: 100;
+}
+  
+@font-face {
+    font-family: "Elektra";
+    src: url("../fonts/Elektra-Light-Italic.otf");
+    font-style: italic;
+    font-weight: 100;
+}
+
+@font-face {
+    font-family: "Elektra";
+    src: url("../fonts/Elektra-Normal.otf");
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Elektra";
+    src: url("../fonts/Elektra-Normal-Italic.otf");
+    font-style: italic;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Elektra";
+    src: url("../fonts/Elektra-Medium.otf");
+    font-style: normal;
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: "Elektra";
+    src: url("../fonts/Elektra-Medium-Italic.otf");
+    font-style: italic;
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: "Elektra";
+    src: url("../fonts/Elektra-Bold.otf");
+    font-style: normal;
+    font-weight: 900;
+}
+
+@font-face {
+    font-family: "Elektra";
+    src: url("../fonts/Elektra-Bold-Italic.otf");
+    font-style: italic;
+    font-weight: 900;
+}
