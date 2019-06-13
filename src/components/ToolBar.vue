@@ -1,7 +1,6 @@
 <template>
-  <div>
-    <h2>TOOLBAR</h2>
-  </div>
+  <aside>
+  </aside>
 </template>
 
 <script>

@@ -1,16 +1,9 @@
 <template>
-  <div class="home">
-    <div class="nav">
-      <Header />
-    </div>
-    <div class="main-container">
-      <div class="aside">
-        <ToolBar />
-      </div>
-
-      <div class="main">
-        <Main />
-      </div>
+  <div id="home">
+    <Header />
+    <div id="main-container">
+      <ToolBar />
+      <Main />
     </div>
   </div>
 </template>
@@ -30,6 +23,6 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style>
 @import "../assets/css/home-style.css";
 </style>
