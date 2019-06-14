@@ -1,0 +1,16 @@
+main {
+    background-color: #f0f0f0;
+    overflow: auto;
+}
+
+#groups-title {
+    height: 7vh;
+}
+
+/* #groups-title > div {
+    background-color: #fcfcfc;
+} */
+
+.day {
+    width: 100%;
+}
