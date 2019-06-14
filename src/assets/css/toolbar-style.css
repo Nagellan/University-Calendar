@@ -1,0 +1,68 @@
+aside {
+    display: flex;
+    flex-direction: column;
+}
+.item {
+    height: 35px;
+}
+.days {
+    color: #6c6c6c;
+    font-size: 22px;
+    font-family: "Elektra Text Pro";
+    padding: 27px 27px 0;
+}
+.weekDays-selector {
+    padding: 0 28px 0 27px;
+    display: flex;
+    justify-content: space-between;
+}
+.weekDays-selector input {
+    display: none !important;
+}
+
+.weekDays-selector input[type="checkbox"] + label {
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+
+    border: 1.5px solid #d3d3d3;
+    color: #d3d3d3;
+    display: inline-block;
+    border-radius: 3px;
+    background: white;
+    height: 25px;
+    width: 25px;
+    margin-right: 5px;
+    line-height: 25px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.weekDays-selector input[type="checkbox"]:checked + label {
+    background: #92b825;
+    color: #ffffff;
+    border: 1.5px solid #92b825;
+    -webkit-animation: tick 0.08s ease-in-out;
+    animation: tick 0.08s ease-in-out;
+}
+
+@-webkit-keyframes tick {
+    0% {
+        -webkit-transform: scale(0.7);
+        transform: scale(0.7);
+    }
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}
+@keyframes tick {
+    0% {
+        -webkit-transform: scale(0.7);
+        transform: scale(0.7);
+    }
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}
