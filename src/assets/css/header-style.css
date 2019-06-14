@@ -1,0 +1,201 @@
+nav{
+	padding-left: 20px;
+	width: 100vm;
+	height: 58px;
+	border-bottom: 2px solid #92ba1f;
+	
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	
+	font-family: Elektra;
+	font-size: 30px;
+	color: black;
+}
+
+
+
+/*menu and logo side*/
+div.left-nav-bar{
+	width: 300px;
+	
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+}
+
+/*menu button*/
+img.menu{
+	width: 20px;
+	z-index: 1;
+}
+div.menu-circle{
+	width: 30px;
+	height:30px;
+	border-radius: 50%;
+	
+	position: absolute;
+	top: 23px;
+	left: 22px;
+	z-index: 2;
+	
+	cursor: pointer;
+	
+	background-color: #aaaaaa;
+	opacity: 0;
+	transition: opacity 0.3s;
+}
+div.menu-circle:hover {
+	opacity: 0.48;
+}
+/*menu button end*/
+
+/*university logo*/
+img.logo{
+	height: 90px;
+	
+	position: relative;
+	bottom: 4px;
+}
+/*university logo*/
+/*menu and logo side end*/
+
+
+
+
+/*right navigation bar side*/
+div.right-nav-bar{
+	width: 1020px;
+	height: 58px;
+	
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+
+/*academic schedule button*/
+div.academic-schedule{
+	flex-basis: 320px;
+	height: 58px;
+	
+	background: white;
+	cursor: pointer;
+	transition: background 0.3s;
+	
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+}
+div.academic-schedule:hover {
+	background: rgba(200, 200, 200, 0.5);
+}
+/*academic schedule button end*/
+
+/*button text*/
+p.nav-button{
+	padding: 15px;
+	white-space: nowrap;
+}
+/*button text end*/
+
+/*room schedule button*/
+div.room-schedule{
+	flex-basis: 270px;
+	height: 58px;
+	
+	background: white;
+	cursor: pointer;
+	transition: background 0.3s;
+	
+	display: none;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+}
+div.room-schedule:hover {
+	background: rgba(200, 200, 200, 0.5);
+}
+
+/*change button*/
+img.up{
+	transform: rotate(180deg);
+}
+/*change button end*/
+/*room schedule button end*/
+
+
+/*buttons side*/
+div.buttons{
+	flex-basis: 10%;
+	
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	align-items: center;
+	
+}
+
+
+/*full-screen button*/
+img.full-screen{
+	width: 21px;
+	z-index: 1;
+}
+div.full-screen-circle{
+	width: 30px;
+	height:30px;
+	border-radius: 50%;
+	
+	position: relative;
+	left: 25px;
+	z-index: 2;
+	
+	cursor: pointer;
+	
+	background-color: #aaaaaa;
+	opacity: 0;
+	transition: opacity 0.3s;
+}
+div.full-screen-circle:hover {
+	opacity: 0.5;
+}
+/*full-screen button end*/
+
+/*profile button*/
+img.profile{
+	width: 18px;
+	
+	position: relative;
+	bottom: 15px;
+	left: 6px;
+	z-index: 1;
+}
+div.profile{
+	padding: 20px;
+}
+div.profile-circle{
+	width: 30px;
+	height:30px;
+	border-radius: 50%;
+	
+	position: relative;
+	top: 18px;
+	z-index: 2;
+	
+	cursor: pointer;
+	
+	background-color: #aaaaaa;
+	opacity: 0;
+	transition: opacity 0.3s;
+}
+div.profile-circle:hover {
+	opacity: 0.5;
+}
+/*profile button end*/
+/*buttons side end*/
+/*right navigation bar side end*/
