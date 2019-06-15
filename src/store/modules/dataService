@@ -1,5 +1,5 @@
 const state = {
-  days: [false, false, false, false, false, false, false]
+  days: [true, true, false, false, false, false, false]
 };
 
 const getters = {
