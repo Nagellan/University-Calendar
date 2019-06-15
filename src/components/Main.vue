@@ -36,40 +36,21 @@ Vue.component('day', {
 });
 
 export default {
-  methods: {
-    getDayName(dayNum) {
-      if (dayNum == 0)
-        return "Monday";
-      else if (dayNum == 1)
-        return "Tuesday";
-      else if (dayNum == 2)
-        return "Wednesday";
-      else if (dayNum == 3)
-        return "Thursday";
-      else if (dayNum == 4)
-        return "Friday";
-      else if (dayNum == 5)
-        return "Saturday";
-      else if (dayNum == 6)
-        return "Sunday";
-      else 
-        return null;
-    }
-  },
   computed: {
     presentDaysStatus: function () {
       let daysArray = [];
 
-      for (let dayNum in this.dayStatus)
-        if (this.dayStatus[dayNum])
-          daysArray.push(this.getDayName(dayNum));
+      for (let dayNum in this.daysStatus)
+        if (this.daysStatus[dayNum])
+          daysArray.push(this.weekDays[dayNum]);
 
       return daysArray;
     }
   },
   data() {
     return {
-      dayStatus: this.$store.getters.getDayStatus,
+      daysStatus: this.$store.getters.getDayStatus,
+      weekDays: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
       weekSchedule: [
         {
           name: "Monday",
