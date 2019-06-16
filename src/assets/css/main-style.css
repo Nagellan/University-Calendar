@@ -1,15 +1,37 @@
 main {
     background-color: #f0f0f0;
     overflow: auto;
+    position: relative;
 }
 
 #groups-title {
+    border-collapse: collapse;
+    width: 100%;
+
+    position: sticky;
+    top: 0;
+}
+
+#groups-title .row {
     height: 7vh;
 }
 
-/* #groups-title > div {
-    background-color: #fcfcfc;
-} */
+#groups-title .cell {
+    background-color: rgba(255, 255, 255, 0.7);
+
+    text-align: center;
+    font-size: 3vh;
+    font-weight: 600;
+    letter-spacing: -0.1vh;
+
+    border: 0.1vh solid #e2e3e6;
+    border-top: 0;
+}
+
+#groups-title .time-cell {
+    width: 6vw;
+    background-color: unset;
+}
 
 .day {
     width: 100%;

@@ -17,10 +17,11 @@ import Vue from "vue";
 
 Vue.component('groups-title', {
   render(h) {
-    return h('table', {attrs: {id: 'groups-title'}}, [
-      h('tr', 
-        this.groupsList.map((group) => h('td', group))
-      )
+    return h('table', {attrs: {id: 'groups-title', cellspacing: 0}}, [
+      h('tr', {class: "row"}, [
+        h('td', {class: "time-cell"}),
+        ...this.groupsList.map((group) => h('td', {class: 'cell'}, group))
+      ])
     ]);
   },
   props: [
