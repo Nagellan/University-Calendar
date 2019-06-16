@@ -1,6 +1,9 @@
 <template>
   <main>
-    <groups-title />
+    <groups-title 
+      :groupsList="presentGroups"
+    />
+
     <day
       v-for="day in presentDaysStatus"
       :key="day"
@@ -13,11 +16,16 @@
 import Vue from "vue";
 
 Vue.component('groups-title', {
-  render () {
-    return (
-      <div id="groups-title">Groups title</div>
-    )
-  }
+  render(h) {
+    return h('table', {attrs: {id: 'groups-title'}}, [
+      h('tr', 
+        this.groupsList.map((group) => h('td', group))
+      )
+    ]);
+  },
+  props: [
+    'groupsList'
+  ]
 });
 
 Vue.component('day', {
@@ -45,6 +53,16 @@ export default {
           daysArray.push(this.weekDays[dayNum]);
 
       return daysArray;
+    },
+    presentGroups: function () {
+      let groupsArray = [];
+
+      groupsArray = this.weekSchedule
+        .map((day) => day.groups.map((group) => group.name))            // get array of groups lists for each day
+        .reduce((prev, day) => prev.concat(day))                        // merge arrays inside the main array
+        .filter((group, index, self) => self.indexOf(group) == index);  // remove duplicate groups
+
+      return groupsArray;
     }
   },
   data() {
