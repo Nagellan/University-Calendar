@@ -32,9 +32,17 @@ Vue.component('groups-title', {
 Vue.component('day', {
   render () {
     return (
-      <table class="day">
+      <table class="day" cellspacing="0">
         <tr>
-          <td> { this.dayName } </td>
+          <td class="day-title" colspan="99">
+            { this.dayName }
+            <div class="day-title-separator"></div>
+          </td>
+        </tr>
+        <tr class="row">
+          <td class="time-cell"></td>
+          <td class="cell"> { this.dayName } </td>
+          <td class="cell"> { this.dayName } </td>
         </tr>
       </table>
     )
