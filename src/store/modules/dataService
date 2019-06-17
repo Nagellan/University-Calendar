@@ -1,22 +1,36 @@
 const state = {
-  days: [false, false, false, false, false, false, false]
+  days: [true, true, true, true, true, false, false],
+  roomActive: 108,
+  scheduleStatus: "Academic"
 };
 
 const getters = {
   getDayStatus: state => {
     return state.days;
+  },
+  getActiveRoom: state => {
+    return state.roomActive;
+  },
+  getScheduleStatus: state => {
+    return state.scheduleStatus;
   }
 };
 
 const mutations = {
   setDayStatus: (state, payload) => {
     state.days = payload;
+  },
+  setActiveRoom: (state, payload) => {
+    state.roomActive = payload;
   }
 };
 
 const actions = {
   setDayStatus: async (context, payload) => {
     context.commit("set_day_status", payload);
+  },
+  setActiveRoom: (state, payload) => {
+    state.roomActive = payload;
   }
 };
 
