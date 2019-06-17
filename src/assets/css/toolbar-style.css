@@ -5,7 +5,7 @@ aside {
 }
 
 ::-webkit-scrollbar {
-    width: 5px;
+    width: 3px;
     background-color: #F5F5F5;
 }
 
@@ -15,23 +15,24 @@ aside {
     background: #c4c4c4;
 }
 
+
 .item {
     height: 2vw;
 }
 
 .label {
-    /*color: #6c6c6c;*/
     font-size: 1.35vw;
     font-family: "Elektra", sans-serif;
     padding: 1.8vw 1.75vw 0;
 }
 
-.labelv2 {
-    /*user-select: none;*/
+.label2 {
+    user-select: none;
     color: #666666;
     font-size: 1.1vw;
     font-family: "Elektra", sans-serif;
 }
+
 
 .weekDays-selector {
     padding: 0 1.75vw 0;
@@ -88,6 +89,7 @@ aside {
     }
 }
 
+
 .list {
     padding: 0.1vw 1.75vw 1vw;
 }
@@ -113,7 +115,7 @@ aside {
 }
 
 .room-container div {
-    /*user-select: none;*/
+    user-select: none;
     text-align: center;
     color: #9C9C9C;
     font-family: "Elektra", sans-serif;
@@ -187,10 +189,11 @@ aside {
     outline: none;
 }
 
-.group {
+.group-label {
     margin: 0.2vw 0 0;
     font-size: 1.1vw;
 }
+
 .option-input:hover {
     background: #9faab7;
 }

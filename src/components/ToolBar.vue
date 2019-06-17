@@ -6,24 +6,16 @@
     <div
       v-if="scheduleStatus === 'Room'"
       class="list"
-      v-for="(floor, index) in floorActive"
+      v-for="(floor, index) in activeFloor.floors"
     >
       <div class="dropdown" v-bind:class="{ active: floor[1] }">
-        <div
-          class="label-container"
-          v-on:click="
-            floorActive.splice(index, 1, [
-              floorActive[index][0],
-              !floorActive[index][1]
-            ])
-          "
-        >
-          <div class="labelv2">{{ floor[0] }}</div>
+        <div class="label-container" v-on:click="changeActiveFloor(index)">
+          <div class="label2">{{ floor[0] }}</div>
           <div class="triangle" v-bind:class="{ active: floor[1] }"></div>
         </div>
         <div class="room-container">
           <div
-            v-for="num in roomNumber[index]"
+            v-for="num in activeFloor.rooms[index]"
             v-bind:class="{ activeRoom: roomActive === num }"
             v-on:click="changeActiveRoom(num)"
           >
@@ -37,28 +29,24 @@
     <div
       v-if="scheduleStatus === 'Academic'"
       class="list"
-      v-for="(course, index) in courseActive"
+      v-for="(course, index) in activeCourse.courses"
     >
       <div class="dropdown" v-bind:class="{ active: course[1] }">
-        <div
-          class="label-container"
-          v-on:click="
-            courseActive.splice(index, 1, [
-              courseActive[index][0],
-              !courseActive[index][1]
-            ])
-          "
-        >
-          <div class="labelv2">{{ course[0] }}</div>
+        <div class="label-container" v-on:click="changeActiveCourses(index)">
+          <div class="label2">{{ course[0] }}</div>
           <div class="triangle" v-bind:class="{ active: course[1] }"></div>
         </div>
         <div
-          v-for="num in groupNumber[index]"
-          v-on:click="changeActiveRoom(num)"
+          v-for="(num, groupIndex) in activeCourse.groups[index]"
+          v-on:click="changeActiveGroups(index, groupIndex)"
         >
           <label style="display: flex; flex-direction: row">
-            <input type="checkbox" class="option-input checkbox" checked />
-            <div class="group">{{ num }}</div>
+            <input
+              type="checkbox"
+              class="option-input checkbox"
+              v-model="num[1]"
+            />
+            <div class="group-label">{{ num[0] }}</div>
           </label>
         </div>
       </div>
@@ -72,51 +60,8 @@ import Days from "./additional components/Days";
 export default {
   data() {
     return {
-      courseActive: [
-        ["BS1", true],
-        ["BS2", true],
-        ["BS3", false],
-        ["BS4", false],
-        ["MS1", false],
-        ["MS2", false]
-      ],
-      floorActive: [["100s", true], ["200s", true], ["300s", true]],
-      groupNumber: [
-        ["Group 1", "Group 2", "Group 3", "Group 4"],
-        ["Group 1", "Group 2", "Group 3", "Group 4"],
-        ["Group 1", "Group 2", "Group 3", "Group 4"],
-        ["Group 1", "Group 2", "Group 3"],
-        ["Group 1", "Group 2", "Group 3"],
-        ["Group 1", "Group 2"]
-      ],
-      roomNumber: [
-        [101, 102, 103, 104, 105, 106, 107, 108],
-        [201, 202, 203, 204, 205, 206, 207, 208],
-        [
-          300,
-          301,
-          302,
-          303,
-          304,
-          305,
-          306,
-          307,
-          308,
-          309,
-          310,
-          311,
-          312,
-          313,
-          314,
-          315,
-          316,
-          317,
-          318,
-          319,
-          320,
-          321
-        ]
-      ],
+      activeCourse: this.$store.getters.getActiveCourse,
+      activeFloor: this.$store.getters.getActiveFloor,
       roomActive: this.$store.getters.getActiveRoom,
       scheduleStatus: this.$store.getters.getScheduleStatus
     };
@@ -125,6 +70,25 @@ export default {
     changeActiveRoom(num) {
       this.roomActive = num;
       this.$store.dispatch("setActiveRoom", num);
+    },
+    changeActiveCourses(index) {
+      this.activeCourse.courses.splice(index, 1, [
+        this.activeCourse.courses[index][0],
+        !this.activeCourse.courses[index][1]
+      ]);
+    },
+    changeActiveGroups(index, groupIndex) {
+      this.activeCourse.groups[index].splice(groupIndex, 1, [
+        this.activeCourse.groups[index][groupIndex][0],
+        !this.activeCourse.groups[index][groupIndex][1]
+      ]);
+      this.$store.dispatch("setActiveGroups", this.activeCourse.groups);
+    },
+    changeActiveFloor(index) {
+      this.activeFloor.floors.splice(index, 1, [
+        this.activeFloor.floors[index][0],
+        !this.activeFloor.floors[index][1]
+      ]);
     }
   },
   components: {

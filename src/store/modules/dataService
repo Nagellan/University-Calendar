@@ -1,7 +1,67 @@
 const state = {
   days: [true, true, true, true, true, false, false],
   roomActive: 108,
-  scheduleStatus: "Academic"
+  scheduleStatus: "Academic",
+  activeCourse: {
+    courses: [
+      ["BS1", true],
+      ["BS2", true],
+      ["BS3", false],
+      ["BS4", false],
+      ["MS1", false],
+      ["MS2", false]
+    ],
+    groups: [
+      [
+        ["Group 1", true],
+        ["Group 2", true],
+        ["Group 3", true],
+        ["Group 4", true]
+      ],
+      [
+        ["Group 1", true],
+        ["Group 2", true],
+        ["Group 3", true],
+        ["Group 4", true]
+      ],
+      [["Group 1", false], ["Group 2", true], ["Group 3", true]],
+      [["Group 1", false], ["Group 2", true], ["Group 3", true]],
+      [["Group 1", false], ["Group 2", false]],
+      [["Group 1", false], ["Group 2", false]]
+    ]
+  },
+  activeFloor: {
+    floors: [["100s", true], ["200s", true], ["300s", true]],
+    rooms: [
+      [101, 102, 103, 104, 105, 106, 107, 108],
+      [201, 202, 203, 204, 205, 206, 207, 208],
+      [
+        300,
+        301,
+        302,
+        303,
+        304,
+        305,
+        306,
+        307,
+        308,
+        309,
+        310,
+        311,
+        312,
+        313,
+        314,
+        315,
+        316,
+        317,
+        318,
+        319,
+        320,
+        321,
+        321
+      ]
+    ]
+  }
 };
 
 const getters = {
@@ -13,6 +73,14 @@ const getters = {
   },
   getScheduleStatus: state => {
     return state.scheduleStatus;
+  },
+  getActiveCourse: state => {
+    console.log(state.activeCourse);
+    return state.activeCourse;
+  },
+  getActiveFloor: state => {
+    console.log(state.activeFloor);
+    return state.activeFloor;
   }
 };
 
@@ -22,15 +90,21 @@ const mutations = {
   },
   setActiveRoom: (state, payload) => {
     state.roomActive = payload;
+  },
+  setActiveGroups: (state, payload) => {
+    state.activeCourse.groups = payload;
   }
 };
 
 const actions = {
   setDayStatus: async (context, payload) => {
-    context.commit("set_day_status", payload);
+    context.commit("setDayStatus", payload);
   },
-  setActiveRoom: (state, payload) => {
-    state.roomActive = payload;
+  setActiveRoom: (context, payload) => {
+    context.commit("setActiveRoom", payload);
+  },
+  setActiveGroups: (context, payload) => {
+    context.commit("setActiveGroups", payload);
   }
 };
 
