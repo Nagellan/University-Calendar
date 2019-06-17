@@ -75,19 +75,19 @@ export default {
       courseActive: [
         ["BS1", true],
         ["BS2", true],
-        ["BS3", true],
-        ["BS4", true],
-        ["MS1", true],
-        ["MS2", true]
+        ["BS3", false],
+        ["BS4", false],
+        ["MS1", false],
+        ["MS2", false]
       ],
       floorActive: [["100s", true], ["200s", true], ["300s", true]],
       groupNumber: [
         ["Group 1", "Group 2", "Group 3", "Group 4"],
         ["Group 1", "Group 2", "Group 3", "Group 4"],
         ["Group 1", "Group 2", "Group 3", "Group 4"],
-        ["Group 1", "Group 2", "Group 3", "Group 4"],
-        ["Group 1", "Group 2", "Group 3", "Group 4"],
-        ["Group 1", "Group 2", "Group 3", "Group 4"]
+        ["Group 1", "Group 2", "Group 3"],
+        ["Group 1", "Group 2", "Group 3"],
+        ["Group 1", "Group 2"]
       ],
       roomNumber: [
         [101, 102, 103, 104, 105, 106, 107, 108],
