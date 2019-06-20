@@ -20,6 +20,10 @@ tr {
 
 .time-cell {
     width: 6vw;
+    text-align: right;
+    color: rgba(1, 1, 1, 0.25);
+    font-size: 1.9vh;
+    padding-right: 1vw;
 }
 
 #groups-title {

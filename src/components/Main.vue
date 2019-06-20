@@ -39,10 +39,10 @@ Vue.component('day', {
           h('div', {class: "day-title-separator"})
         ])
       ]),
-      h('tr', {class: "row"}, [
-        h('td', {class: "time-cell"}),
-        h('td', {class: "cell"}, [ this.dayName ])
-      ])
+      ...this.events.map((event) => h('tr', {class: "row"}, [
+        h('td', {class: "time-cell"}, [ event.startTime, h('br'), event.endTime ]),
+        h('td', {class: "cell"}, [ this.dayName ])    
+      ]))
     ]);
   },
   props: [
@@ -56,7 +56,7 @@ export default {
     getEvents(dayName) {
       return this.schedule
               .filter((day) => day.name == dayName)
-              .map((day) => day.timeSlots);
+              .map((day) => day.timeSlots)[0];
     }
   },
   computed: {
