@@ -42,7 +42,7 @@ const state = {
         },
         {
           name: "2",
-          isActive: false,
+          isActive: true,
         },
         {
           name: "3",
@@ -60,7 +60,7 @@ const state = {
       groups: [
         {
           name: "1",
-          isActive: true,
+          isActive: false,
         },
         {
           name: "2",

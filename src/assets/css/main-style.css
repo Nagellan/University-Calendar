@@ -62,12 +62,8 @@ tr {
     border-top-left-radius: 1vh;
     border-bottom-left-radius: 1vh;
     position: absolute;
-    left: 17vh;
+    left: 20vh;
     top: 46%;
-}
-
-main .day:first-child {
-    margin-top: -7vh;
 }
 
 .day .row:last-child .cell:nth-child(2) {

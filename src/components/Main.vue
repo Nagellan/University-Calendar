@@ -1,13 +1,14 @@
 <template>
   <main>
     <groups-title 
-      :groupsList="presentGroups"
+      :groupNames="presentGroupsNames"
     />
 
     <day
-      v-for="day in presentDaysStatus"
+      v-for="day in presentDaysNames"
       :key="day"
       :dayName="day"
+      :events="getEvents(day)"
     />
   </main>
 </template>
@@ -20,216 +21,64 @@ Vue.component('groups-title', {
     return h('table', {attrs: {id: 'groups-title', cellspacing: 0}}, [
       h('tr', {class: "row"}, [
         h('td', {class: "time-cell"}),
-        ...this.groupsList.map((group) => h('td', {class: 'cell'}, group))
+        ...this.groupNames.map((group) => h('td', {class: 'cell'}, group))
       ])
     ]);
   },
   props: [
-    'groupsList'
+    'groupNames'
   ]
 });
 
 Vue.component('day', {
-  render () {
-    return (
-      <table class="day" cellspacing="0">
-        <tr>
-          <td class="day-title" colspan="99">
-            { this.dayName }
-            <div class="day-title-separator"></div>
-          </td>
-        </tr>
-        <tr class="row">
-          <td class="time-cell"></td>
-          <td class="cell"> { this.dayName } </td>
-          <td class="cell"> { this.dayName } </td>
-        </tr>
-      </table>
-    )
+  render (h) {
+    return h('table', {class: "day", attrs: {cellspacing: "0"}}, [
+      h('tr', [
+        h('td', {class: "day-title", attrs: {colspan: "99"}}, [
+          this.dayName,
+          h('div', {class: "day-title-separator"})
+        ])
+      ]),
+      h('tr', {class: "row"}, [
+        h('td', {class: "time-cell"}),
+        h('td', {class: "cell"}, [ this.dayName ])
+      ])
+    ]);
   },
   props: [
-    'dayName'
+    'dayName',
+    'events'
   ]
 });
 
 export default {
+  methods: {
+    getEvents(dayName) {
+      return this.schedule
+              .filter((day) => day.name == dayName)
+              .map((day) => day.timeSlots);
+    }
+  },
   computed: {
-    presentDaysStatus: function () {
-      let daysArray = [];
-
-      for (let dayNum in this.daysStatus)
-        if (this.daysStatus[dayNum])
-          daysArray.push(this.weekDays[dayNum]);
-
-      return daysArray;
+    presentDaysNames: function () {
+      return this.daysStatuses
+              .filter((day) => day.isActive)
+              .map((day) => day.name);
     },
-    presentGroups: function () {
-      let groupsArray = [];
-
-      groupsArray = this.weekSchedule
-        .map((day) => day.groups.map((group) => group.name))            // get array of groups lists for each day
-        .reduce((prev, day) => prev.concat(day))                        // merge arrays inside the main array
-        .filter((group, index, self) => self.indexOf(group) == index);  // remove duplicate groups
-
-      return groupsArray;
+    presentGroupsNames: function () {
+      return this.courses
+              .filter((course) => course.isActive)
+              .map((course) => course.groups
+                                .filter((group) => group.isActive)
+                                .map((group) => course.name + '-' + group.name))
+              .reduce((prev, group) => prev.concat(group));
     }
   },
   data() {
     return {
-      daysStatus: this.$store.getters.getDayStatus,
-      weekDays: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-      weekSchedule: [
-        {
-          name: "Monday",
-          groups: [
-            {
-              name: "BS1-1",
-              timeSlots: [
-                {
-                  startTime: "9:00",
-                  endTime: "10:30",
-                  event: {
-                    type: "Lecture",
-                    room: 108,
-                    name: "Discrete Math and Logic",
-                    organizer: "Nikolay Shilov"
-                  }
-                },
-                {
-                  startTime: "10:35",
-                  endTime: "12:05",
-                  event: {
-                    type: "Tutorial",
-                    room: 107,
-                    name: "Philosophy",
-                    organizer: "Joseph Brown"
-                  }
-                },
-                {
-                  startTime: "14:10",
-                  endTime: "15:40",
-                  event: {
-                    type: "Lab",
-                    room: 314,
-                    name: "Discrete Math and Logic",
-                    organizer: "Rustam Gafarov"
-                  }
-                }
-              ]
-            },
-            {
-              name: "BS1-2",
-              timeSlots: [
-                {
-                  startTime: "9:00",
-                  endTime: "10:30",
-                  event: {
-                    type: "Lecture",
-                    room: 108,
-                    name: "Discrete Math and Logic",
-                    organizer: "Nikolay Shilov"
-                  }
-                },
-                {
-                  startTime: "10:35",
-                  endTime: "12:05",
-                  event: {
-                    type: "Tutorial",
-                    room: 107,
-                    name: "Philosophy",
-                    organizer: "Joseph Brown"
-                  }
-                },
-                {
-                  startTime: "15:45",
-                  endTime: "17:15",
-                  event: {
-                    type: "Lab",
-                    room: 316,
-                    name: "Discrete Math and Logic",
-                    organizer: "Alexey Karachev"
-                  }
-                }
-              ]
-            }
-          ]
-        },
-        {
-          name: "Tuesday",
-          groups: [
-            {
-              name: "BS1-1",
-              timeSlots: [
-                {
-                  startTime: "9:00",
-                  endTime: "10:30",
-                  event: {
-                    type: "Lecture",
-                    room: 108,
-                    name: "Discrete Math and Logic",
-                    organizer: "Nikolay Shilov"
-                  }
-                },
-                {
-                  startTime: "10:35",
-                  endTime: "12:05",
-                  event: {
-                    type: "Tutorial",
-                    room: 107,
-                    name: "Philosophy",
-                    organizer: "Joseph Brown"
-                  }
-                },
-                {
-                  startTime: "14:10",
-                  endTime: "15:40",
-                  event: {
-                    type: "Lab",
-                    room: 314,
-                    name: "Discrete Math and Logic",
-                    organizer: "Rustam Gafarov"
-                  }
-                }
-              ]
-            },
-            {
-              name: "BS1-2",
-              timeSlots: [
-                {
-                  startTime: "9:00",
-                  endTime: "10:30",
-                  event: {
-                    type: "Lecture",
-                    room: 108,
-                    name: "Discrete Math and Logic",
-                    organizer: "Nikolay Shilov"
-                  }
-                },
-                {
-                  startTime: "10:35",
-                  endTime: "12:05",
-                  event: {
-                    type: "Tutorial",
-                    room: 107,
-                    name: "Philosophy",
-                    organizer: "Joseph Brown"
-                  }
-                },
-                {
-                  startTime: "15:45",
-                  endTime: "17:15",
-                  event: {
-                    type: "Lab",
-                    room: 316,
-                    name: "Discrete Math and Logic",
-                    organizer: "Alexey Karachev"
-                  }
-                }
-              ]
-            }
-          ]
-        }
-      ]
+      daysStatuses: this.$store.getters.getDaysStatuses,
+      courses: this.$store.getters.getCourses,
+      schedule: this.$store.getters.getSchedule
     };
   }
 };
