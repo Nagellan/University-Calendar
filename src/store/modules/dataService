@@ -1,41 +1,161 @@
 const state = {
-  days: [true, true, true, true, true, false, false],
+  daysStatuses: [
+    {
+      name: "Monday",
+      isActive: true
+    },
+    {
+      name: "Tuesday",
+      isActive: true
+    },
+    {
+      name: "Wednesday",
+      isActive: false
+    },
+    {
+      name: "Thursday",
+      isActive: false
+    },
+    {
+      name: "Friday",
+      isActive: false
+    },
+    {
+      name: "Saturday",
+      isActive: false
+    },
+    {
+      name: "Sunday",
+      isActive: false
+    }
+  ],
   roomActive: 108,
   scheduleStatus: "Academic",
-  activeCourse: {
-    courses: [
-      ["BS1", true],
-      ["BS2", true],
-      ["BS3", false],
-      ["BS4", false],
-      ["MS1", false],
-      ["MS2", false]
-    ],
-    groups: [
-      [
-        ["Group 1", true],
-        ["Group 2", true],
-        ["Group 3", true],
-        ["Group 4", true]
-      ],
-      [
-        ["Group 1", true],
-        ["Group 2", true],
-        ["Group 3", true],
-        ["Group 4", true]
-      ],
-      [["Group 1", false], ["Group 2", true], ["Group 3", true]],
-      [["Group 1", false], ["Group 2", true], ["Group 3", true]],
-      [["Group 1", false], ["Group 2", false]],
-      [["Group 1", false], ["Group 2", false]]
-    ]
-  },
-  activeFloor: {
-    floors: [["100s", true], ["200s", true], ["300s", true]],
-    rooms: [
-      [101, 102, 103, 104, 105, 106, 107, 108],
-      [201, 202, 203, 204, 205, 206, 207, 208],
-      [
+  courses: [
+    {
+      name: "BS1",
+      isActive: true,
+      groups: [
+        {
+          name: "1",
+          isActive: true
+        },
+        {
+          name: "2",
+          isActive: false
+        },
+        {
+          name: "3",
+          isActive: false
+        },
+        {
+          name: "4",
+          isActive: false
+        }
+      ]
+    },
+    {
+      name: "BS2",
+      isActive: true,
+      groups: [
+        {
+          name: "1",
+          isActive: true
+        },
+        {
+          name: "2",
+          isActive: false
+        },
+        {
+          name: "3",
+          isActive: false
+        },
+        {
+          name: "4",
+          isActive: false
+        }
+      ]
+    },
+    {
+      name: "BS3",
+      isActive: false,
+      groups: [
+        {
+          name: "1",
+          isActive: false
+        },
+        {
+          name: "2",
+          isActive: false
+        },
+        {
+          name: "3",
+          isActive: false
+        }
+      ]
+    },
+    {
+      name: "BS4",
+      isActive: false,
+      groups: [
+        {
+          name: "1",
+          isActive: false
+        },
+        {
+          name: "2",
+          isActive: false
+        },
+        {
+          name: "3",
+          isActive: false
+        }
+      ]
+    },
+    {
+      name: "MS1",
+      isActive: false,
+      groups: [
+        {
+          name: "1",
+          isActive: false
+        },
+        {
+          name: "2",
+          isActive: false
+        }
+      ]
+    },
+    {
+      name: "MS2",
+      isActive: true,
+      groups: [
+        {
+          name: "1",
+          isActive: false
+        },
+        {
+          name: "2",
+          isActive: false
+        }
+      ]
+    }
+  ],
+  floors: [
+    {
+      floor: 1,
+      isActive: true,
+      rooms: [101, 102, 103, 104, 105, 106, 107, 108]
+    },
+    {
+      floor: 2,
+      isActive: true,
+      rooms: [201, 202, 203, 204, 205, 206, 207, 208]
+    },
+    {
+      floor: 3,
+      isActive: true,
+      rooms: [
         300,
         301,
         302,
@@ -57,16 +177,131 @@ const state = {
         318,
         319,
         320,
-        321,
         321
       ]
-    ]
-  }
+    }
+  ],
+  schedule: [
+    {
+      name: "Monday",
+      timeSlots: [
+        {
+          startTime: "9:00",
+          endTime: "10:30",
+          events: [
+            {
+              type: "Lecture",
+              room: 108,
+              name: "Discrete Math and Logic",
+              organizer: "Nikolay Shilov",
+              groups: ["BS1-1", "BS1-2"]
+            }
+          ]
+        },
+        {
+          startTime: "10:35",
+          endTime: "12:05",
+          events: [
+            {
+              type: "Tutorial",
+              room: 107,
+              name: "Philosophy",
+              organizer: "Joseph Brown",
+              groups: ["BS1-1", "BS1-2"]
+            }
+          ]
+        },
+        {
+          startTime: "14:10",
+          endTime: "15:40",
+          events: [
+            {
+              type: "Lab",
+              room: 314,
+              name: "Discrete Math and Logic",
+              organizer: "Rustam Gafarov",
+              groups: ["BS1-1"]
+            }
+          ]
+        },
+        {
+          startTime: "15:45",
+          endTime: "17:15",
+          events: [
+            {
+              type: "Lab",
+              room: 316,
+              name: "Discrete Math and Logic",
+              organizer: "Alexey Karachev",
+              groups: ["BS1-2"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      name: "Tuesday",
+      timeSlots: [
+        {
+          startTime: "9:00",
+          endTime: "10:30",
+          events: [
+            {
+              type: "Lecture",
+              room: 108,
+              name: "Discrete Math and Logic",
+              organizer: "Nikolay Shilov",
+              groups: ["BS1-1", "BS1-2"]
+            }
+          ]
+        },
+        {
+          startTime: "10:35",
+          endTime: "12:05",
+          events: [
+            {
+              type: "Tutorial",
+              room: 107,
+              name: "Philosophy",
+              organizer: "Joseph Brown",
+              groups: ["BS1-1", "BS1-2"]
+            }
+          ]
+        },
+        {
+          startTime: "14:10",
+          endTime: "15:40",
+          events: [
+            {
+              type: "Lab",
+              room: 314,
+              name: "Discrete Math and Logic",
+              organizer: "Rustam Gafarov",
+              groups: ["BS1-1"]
+            }
+          ]
+        },
+        {
+          startTime: "15:45",
+          endTime: "17:15",
+          events: [
+            {
+              type: "Lab",
+              room: 316,
+              name: "Discrete Math and Logic",
+              organizer: "Alexey Karachev",
+              groups: ["BS1-2"]
+            }
+          ]
+        }
+      ]
+    }
+  ]
 };
 
 const getters = {
-  getDayStatus: state => {
-    return state.days;
+  getDaysStatuses: state => {
+    return state.daysStatuses;
   },
   getActiveRoom: state => {
     return state.roomActive;
@@ -74,26 +309,27 @@ const getters = {
   getScheduleStatus: state => {
     return state.scheduleStatus;
   },
-  getActiveCourse: state => {
-    console.log(state.activeCourse);
-    return state.activeCourse;
+  getCourses: state => {
+    return state.courses;
   },
-  getActiveFloor: state => {
-    console.log(state.activeFloor);
-    return state.activeFloor;
+  getFloors: state => {
+    return state.floors;
+  },
+  getSchedule: state => {
+    return state.schedule;
   }
 };
 
 const mutations = {
   setDayStatus: (state, payload) => {
-    state.days = payload;
+    state.daysStatuses = payload;
   },
   setActiveRoom: (state, payload) => {
     state.roomActive = payload;
   },
-  setActiveGroups: (state, payload) => {
-    state.activeCourse.groups = payload;
-  }
+    setCourses: (state, payload) => {
+        state.courses = payload;
+    }
 };
 
 const actions = {
@@ -103,9 +339,9 @@ const actions = {
   setActiveRoom: (context, payload) => {
     context.commit("setActiveRoom", payload);
   },
-  setActiveGroups: (context, payload) => {
-    context.commit("setActiveGroups", payload);
-  }
+    setCourses: (context, payload) => {
+        context.commit("setCourses", payload);
+    }
 };
 
 export default {
