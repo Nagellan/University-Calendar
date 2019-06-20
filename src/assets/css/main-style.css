@@ -9,7 +9,8 @@ table {
     width: 100%;
 }
 
-tr {
+tr,
+.day-title {
     height: 7vh;
 }
 
@@ -38,7 +39,7 @@ tr {
     font-weight: 600;
     letter-spacing: -0.1vh;
 
-    border: 0.1vh solid #e2e3e6;
+    border: 0.1vh solid rgba(1,1,1,0.1);
     border-top: 0;
 
     background-color: rgba(255, 255, 255, 0.9);
@@ -49,9 +50,10 @@ tr {
 }
 
 .day .day-title {
-    position: relative;
     padding-left: 1.2vw;
-    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 
     font-size: 3vh;
     font-weight: 600;
@@ -59,21 +61,36 @@ tr {
     color: rgba(1,1,1,0.4);
 }
 
-.day .day-title-separator {
-    width: 100%;
+.day-title .day-name {
+    flex-grow: 1;
+}
+
+.day-title .day-title-separator {
+    flex-grow: 13;
     height: 0.48vh;
     background-color: rgba(1, 1, 1, 0.1);
     border-top-left-radius: 1vh;
     border-bottom-left-radius: 1vh;
-    position: absolute;
-    left: 20vh;
-    top: 46%;
 }
 
-.day .row:last-child .cell:nth-child(2) {
+.day-schedule {
+    table-layout: fixed;
+    width: 100%;
+}
+
+.day-schedule .row:last-child .cell:nth-child(2) {
     border-bottom-left-radius: 1.2vh;
 }
 
-.day .cell {
+.day-schedule .cell {
+    flex-grow: 1;
     background-color: rgba(255, 255, 255, 0.5);
+}
+
+.day-schedule .cell:not(:last-child) {
+    border-right: 0.1vw solid rgba(1,1,1,0.1);
+}
+
+.day-schedule .row:not(:last-child) .cell:not(:first-child) {
+    border-bottom: 0.1vw solid rgba(1,1,1,0.1);
 }

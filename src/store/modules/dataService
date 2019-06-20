@@ -46,7 +46,7 @@ const state = {
         },
         {
           name: "3",
-          isActive: false,
+          isActive: true,
         },
         {
           name: "4",
@@ -175,7 +175,7 @@ const state = {
               room: 108,
               name: "Discrete Math and Logic",
               organizer: "Nikolay Shilov",
-              groups: ["BS1-1", "BS1-2"]
+              groups: ["BS1-1", "BS1-2", "BS1-3"]
             }
           ]
         },
