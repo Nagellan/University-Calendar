@@ -1,6 +1,6 @@
 <template>
-  <header>
-  
+  		<header>
+			
 			<div class="left-nav-bar">
 				<div class="menu-circle"></div>
 				<img class="menu" src="menu_icon.png" />
@@ -8,13 +8,12 @@
 			</div>
 			
 			<div class="right-nav-bar">
-				<script src="change_schedule.js"></script>
 				<div class="academic-schedule">
-					<p class="nav-button">Academic Schedule</p>
+					<p class="schedule-button-text">Academic Schedule</p>
 					<img src="D:\AcademicSchedule\NavBar\image\more_button.png">				
 				</div>
 				<div class="room-schedule">
-					<p class="nav-button">Room Schedule</p>
+					<p class="schedule-button-text">Room Schedule</p>
 					<img class="up" src="D:\AcademicSchedule\NavBar\image\more_button.png">				
 				</div>
 				
@@ -23,12 +22,11 @@
 					<img class="full-screen" src="D:\AcademicSchedule\NavBar\image\full_screen_button-2.jpg" />
 					<div class="profile"><a href="https://my.university.innopolis.ru/" target="_blank">
 						<div class="profile-circle"></div>
-						<img class="profile" src="D:\AcademicSchedule\NavBar\image\profile-icon.png"/>
+						<img class="profile-image" src="D:\AcademicSchedule\NavBar\image\profile-icon.png"/>
 					</a></div>
 				</div>
 			</div>
-
-  </header>
+		</header>
 </template>
 
 <script>
