@@ -1,8 +1,5 @@
 nav{
 	padding-left: 20px;
-	width: 100vm;
-	height: 58px;
-	border-bottom: 2px solid #92ba1f;
 	
 	display: flex;
 	flex-direction: row;
@@ -11,13 +8,15 @@ nav{
 	
 	font-family: Elektra;
 	font-size: 30px;
+	font-style: normal;
+	font-weight: 600;
 	color: black;
 }
 
 
 
 /*menu and logo side*/
-div.left-nav-bar{
+.left-nav-bar{
 	width: 300px;
 	
 	display: flex;
@@ -27,17 +26,17 @@ div.left-nav-bar{
 }
 
 /*menu button*/
-img.menu{
+.menu{
 	width: 20px;
 	z-index: 1;
 }
-div.menu-circle{
+.menu-circle{
 	width: 30px;
 	height:30px;
 	border-radius: 50%;
 	
 	position: absolute;
-	top: 23px;
+	top: 17px;
 	left: 22px;
 	z-index: 2;
 	
@@ -47,13 +46,13 @@ div.menu-circle{
 	opacity: 0;
 	transition: opacity 0.3s;
 }
-div.menu-circle:hover {
+.menu-circle:hover {
 	opacity: 0.48;
 }
 /*menu button end*/
 
 /*university logo*/
-img.logo{
+.logo{
 	height: 90px;
 	
 	position: relative;
@@ -66,9 +65,9 @@ img.logo{
 
 
 /*right navigation bar side*/
-div.right-nav-bar{
+.right-nav-bar{
 	width: 1020px;
-	height: 58px;
+	height: 8vh;
 	
 	display: flex;
 	flex-direction: row;
@@ -78,9 +77,9 @@ div.right-nav-bar{
 
 
 /*academic schedule button*/
-div.academic-schedule{
-	flex-basis: 320px;
-	height: 58px;
+.academic-schedule{
+	height: 8vh;
+	padding-right: 12px;
 	
 	background: white;
 	cursor: pointer;
@@ -91,22 +90,22 @@ div.academic-schedule{
 	justify-content: flex-start;
 	align-items: center;
 }
-div.academic-schedule:hover {
+.academic-schedule:hover {
 	background: rgba(200, 200, 200, 0.5);
 }
 /*academic schedule button end*/
 
 /*button text*/
-p.nav-button{
+.schedule-button-text{
 	padding: 15px;
 	white-space: nowrap;
 }
 /*button text end*/
 
 /*room schedule button*/
-div.room-schedule{
-	flex-basis: 270px;
-	height: 58px;
+.room-schedule{
+	height: 8vh;
+	padding-right: 12px;
 	
 	background: white;
 	cursor: pointer;
@@ -117,12 +116,12 @@ div.room-schedule{
 	justify-content: flex-start;
 	align-items: center;
 }
-div.room-schedule:hover {
+.room-schedule:hover {
 	background: rgba(200, 200, 200, 0.5);
 }
 
 /*change button*/
-img.up{
+.up{
 	transform: rotate(180deg);
 }
 /*change button end*/
@@ -130,7 +129,7 @@ img.up{
 
 
 /*buttons side*/
-div.buttons{
+.buttons{
 	flex-basis: 10%;
 	
 	display: flex;
@@ -142,11 +141,11 @@ div.buttons{
 
 
 /*full-screen button*/
-img.full-screen{
+.full-screen{
 	width: 21px;
 	z-index: 1;
 }
-div.full-screen-circle{
+.full-screen-circle{
 	width: 30px;
 	height:30px;
 	border-radius: 50%;
@@ -161,13 +160,16 @@ div.full-screen-circle{
 	opacity: 0;
 	transition: opacity 0.3s;
 }
-div.full-screen-circle:hover {
+.full-screen-circle:hover {
 	opacity: 0.5;
 }
 /*full-screen button end*/
 
 /*profile button*/
-img.profile{
+.profile{
+	padding: 20px;
+}
+.profile-image{
 	width: 18px;
 	
 	position: relative;
@@ -175,10 +177,7 @@ img.profile{
 	left: 6px;
 	z-index: 1;
 }
-div.profile{
-	padding: 20px;
-}
-div.profile-circle{
+.profile-circle{
 	width: 30px;
 	height:30px;
 	border-radius: 50%;
@@ -193,7 +192,7 @@ div.profile-circle{
 	opacity: 0;
 	transition: opacity 0.3s;
 }
-div.profile-circle:hover {
+.profile-circle:hover {
 	opacity: 0.5;
 }
 /*profile button end*/
