@@ -19,10 +19,15 @@ import Vue from "vue";
 
 Vue.component("groups-title", {
 	render(h) {
-		return h("table", { attrs: { id: "groups-title", cellspacing: 0 } }, [
+		return h("table", { attrs: {
+				id: "groups-title",
+				cellspacing: 0
+			} }, [
 			h("tr", { class: "row" }, [
 				h("td", { class: "time-cell" }),
-				...this.groupNames.map(group => h("td", { class: "cell" }, group))
+				...this.groupNames.map(group => 
+					h("td", { class: "cell" }, group)
+				)
 			])
 		]);
 	},
@@ -33,7 +38,10 @@ Vue.component("day", {
 	render(h) {
 		return h("div", { class: "day" }, [
 			h("div", [
-        h("div", { class: "day-title", attrs: { colspan: this.groupNames.length + 1 } }, [
+        h("div", {
+					class: "day-title",
+					attrs: { colspan: this.groupNames.length + 1 } 
+				}, [
 					h("div", { class: "day-name" }, [ this.dayName ]),
 					h("div", { class: "day-title-separator" })
 				])
@@ -48,26 +56,35 @@ Vue.component("day", {
 						]),
             timeSlot.events.length  // if there is at least 1 event or group
             && timeSlot.events
-              .map(event => event.groups)
-              .reduce((prev, groups) => prev.concat(groups)).length
+            	.map(event => event.groups)
+            	.reduce((prev, groups) => prev.concat(groups)).length
 							? this.groupNames.map(groupName => {
-                  let properEvent = timeSlot.events.filter(event =>
-                    event.groups.includes(groupName)
-                  )[0];
+              		let properEvent = timeSlot.events.filter(event =>
+              				event.groups.includes(groupName)
+            				)[0];
 
 									return properEvent  // if proper event exists
 										? !properEvent.groups.indexOf(groupName)  // if this is a proper group
 											? h("td", { 
-                          class: "cell", 
-                          attrs: { colspan: properEvent.groups.length } 
-                        }, [ properEvent.name ])
+                	        class: "cell", 
+                	        attrs: { colspan: properEvent.groups.length } 
+                	      }, [ 
+                	        h("div", { class: "col-1" }, [
+                	          h("div", { class: "room" }, [properEvent.room]),
+                	          h("div", { class: "type" }, [properEvent.type])
+                	        ]),
+                	        h("div", { class: "col-2" }, [
+                	          h("div", { class: "name" }, [properEvent.name]),
+                	          h("div", { class: "organizer" }, [properEvent.organizer])
+                	        ]),
+                	      ])
 											: ""
 										: h("td", { class: "cell" });
 							  })
 							: h("td", {
 									class: "cell",
 									attrs: { colspan: this.groupNames.length }
-							  })
+								})
 					])
 				)
 			)
