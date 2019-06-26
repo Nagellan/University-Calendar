@@ -1,62 +1,54 @@
 header{
-	padding-left: 20px;
-	
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-start;
 	align-items: center;
-	
-	font-family: Elektra;
-	font-size: 30px;
-	font-style: normal;
-	font-weight: 600;
-	color: black;
+	overflow: hidden;
+	font-size: 4.2vh;
 }
 
 
 
 /*menu and logo side*/
 .left-nav-bar{
-	width: 300px;
+	padding-left: 1vw;
+	width: 22vw;
 	
 	display: flex;
 	flex-direction: row;
-	justify-content: space-around;
+	justify-content: flex-start;
 	align-items: center;
 }
 
 /*menu button*/
-.menu{
-	width: 20px;
-	z-index: 1;
-}
-.menu-circle{
-	width: 30px;
-	height:30px;
+.menu-button{
+	width: 2.2vw;
+	height: 4.75vh;
 	border-radius: 50%;
 	
-	position: absolute;
-	top: 17px;
-	left: 22px;
-	z-index: 2;
-	
 	cursor: pointer;
-	
-	background-color: #aaaaaa;
-	opacity: 0;
-	transition: opacity 0.3s;
+	background-color: white;
+	transition: background-color 0.3s;
 }
-.menu-circle:hover {
-	opacity: 0.48;
+.menu-button:hover {
+	background-color: rgba(170, 170, 170, 0.5);
+}
+.menu-icon{
+	width: 1.5vw;
+	height: 2.5vh;
+
+	position: relative;
+	left: 0.35vw;
+	bottom: 0.2vh;
 }
 /*menu button end*/
 
 /*university logo*/
 .logo{
-	height: 90px;
-	
+	width: 17.5vw;
+	height: 12.3vh;
 	position: relative;
-	bottom: 4px;
+	right: 0.5vw;
 }
 /*university logo*/
 /*menu and logo side end*/
@@ -66,7 +58,7 @@ header{
 
 /*right navigation bar side*/
 .right-nav-bar{
-	width: 1020px;
+	width: 78vw;
 	height: 8vh;
 	
 	display: flex;
@@ -78,122 +70,92 @@ header{
 
 /*academic schedule button*/
 .academic-schedule{
-	height: 8vh;
-	padding-right: 12px;
-	
-	background: white;
+	display: inline;
 	cursor: pointer;
-	transition: background 0.3s;
-	
-	display: flex;
-	flex-direction: row;
-	justify-content: flex-start;
-	align-items: center;
 }
-.academic-schedule:hover {
-	background: rgba(200, 200, 200, 0.5);
+.academic-schedule-button{
+	width: 21.2vw;
+	height: 6.5vh;
+	position: relative;
+	top: 1vh;
+	transition: filter 0.3s;
+}
+.academic-schedule-button:hover{
+	filter: contrast(180%);
 }
 /*academic schedule button end*/
 
-/*button text*/
-.schedule-button-text{
-	padding: 15px;
-	white-space: nowrap;
-}
-/*button text end*/
-
 /*room schedule button*/
 .room-schedule{
-	height: 8vh;
-	padding-right: 12px;
-	
-	background: white;
-	cursor: pointer;
-	transition: background 0.3s;
-	
 	display: none;
-	flex-direction: row;
-	justify-content: flex-start;
-	align-items: center;
+	cursor: pointer;
 }
-.room-schedule:hover {
-	background: rgba(200, 200, 200, 0.5);
+.room-schedule-button{
+	width: 17.5vw;
+	height: 6.5vh;
+	position: relative;
+	top: 1vh;
+	transition: filter 0.3s;
 }
-
-/*change button*/
-.up{
-	transform: rotate(180deg);
+.room-schedule-button:hover{
+	filter: contrast(180%);
 }
-/*change button end*/
 /*room schedule button end*/
 
 
 /*buttons side*/
 .buttons{
-	flex-basis: 10%;
+	padding-right: 1vw;
+	width: 6vw;
 	
 	display: flex;
 	flex-direction: row;
-	justify-content: flex-end;
+	justify-content: space-between;
 	align-items: center;
-	
 }
 
 
 /*full-screen button*/
-.full-screen{
-	width: 21px;
-	z-index: 1;
-}
-.full-screen-circle{
-	width: 30px;
-	height:30px;
+.full-screen-button{
+	width: 2.2vw;
+	height:4.75vh;
 	border-radius: 50%;
 	
-	position: relative;
-	left: 25px;
-	z-index: 2;
-	
 	cursor: pointer;
-	
-	background-color: #aaaaaa;
-	opacity: 0;
-	transition: opacity 0.3s;
+	background-color: white;
+	transition: background-color 0.3s;
 }
-.full-screen-circle:hover {
-	opacity: 0.5;
+.full-screen-button:hover {
+	background-color: rgba(170, 170, 170, 0.5);
+}
+.full-screen-icon{
+	width: 1.35vw;
+	height: 2.8vh;
+	position: relative;
+	left: 0.4vw;
 }
 /*full-screen button end*/
 
 /*profile button*/
-.profile{
-	padding: 20px;
-}
-.profile-image{
-	width: 18px;
-	
-	position: relative;
-	bottom: 15px;
-	left: 6px;
-	z-index: 1;
-}
-.profile-circle{
-	width: 30px;
-	height:30px;
+.profile-button{
+	width: 2.2vw;
+	height:4.75vh;
 	border-radius: 50%;
+	right: 1vw;
+	top: 0.1vh;
 	
-	position: relative;
-	top: 18px;
-	z-index: 2;
-	
-	cursor: pointer;
-	
-	background-color: #aaaaaa;
-	opacity: 0;
-	transition: opacity 0.3s;
+	background-color: white;
+	transition: background-color 0.3s;
 }
-.profile-circle:hover {
-	opacity: 0.5;
+.profile-button:hover {
+	background-color: rgba(170, 170, 170, 0.5);
+}
+.profile-icon{
+	width: 1.35vw;
+	height: 3vh;
+	position: relative;
+	top: 0.2vh;
+	left: 0.4vw;
 }
 /*profile button end*/
 /*buttons side end*/
