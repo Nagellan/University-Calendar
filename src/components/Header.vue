@@ -2,28 +2,29 @@
   		<header>
 			
 			<div class="left-nav-bar">
-				<div class="menu-circle"></div>
-				<img class="menu" src="../assets/images/menu_icon.png" />
-				<img class="logo" src="../assets/images/IU_logo_RGB_2.png" /> 
+				<div class="menu-button">
+					<img class="menu-icon" src="..\assets\images\menu_icon.png" />
+				</div>
+				<img class="logo" src="..\assets\images\IU_logo_RGB_2.png" /> 
 			</div>
 			
 			<div class="right-nav-bar">
 				<div class="academic-schedule">
-					<p class="schedule-button-text">Academic Schedule</p>
-					<img src="../assets/images/more_button.png">				
+					<img class="academic-schedule-button" src="..\assets\images\academic_schedule.png">				
 				</div>
 				<div class="room-schedule">
-					<p class="schedule-button-text">Room Schedule</p>
-					<img class="up" src="../assets/images/more_button.png">				
+					<img class="room-schedule-button" src="..\assets\images\room_schedule.png">				
 				</div>
 				
 				<div class="buttons">
-					<div class="full-screen-circle"></div>
-					<img class="full-screen" src="../assets/images/full_screen_button-2.jpg" />
-					<div class="profile"><a href="https://my.university.innopolis.ru/" target="_blank">
-						<div class="profile-circle"></div>
-						<img class="profile-image" src="../assets/images/profile-icon.png"/>
-					</a></div>
+					<div class="full-screen-button">
+						<img class="full-screen-icon" src="..\assets\images\full_screen_icon.png" />
+					</div>
+					<div class="profile-button">
+						<a href="https://my.university.innopolis.ru/" target="_blank">
+							<img class="profile-icon" src="..\assets\images\profile-icon.png"/>
+						</a>
+					</div>
 				</div>
 			</div>
 		</header>
@@ -36,4 +37,5 @@ export default {};
 <style lang="scss" scoped>
 @import "../assets/css/header-style.css";
 </style>
+
 
