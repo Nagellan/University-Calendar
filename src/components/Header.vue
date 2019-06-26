@@ -10,13 +10,16 @@
 			
 			<div class="right-nav-bar">
 				<div class="academic-schedule">
-					<img class="academic-schedule-button" src="..\assets\images\academic_schedule.png">				
+					<img class="academic-schedule-button" src="..\assets\images\academic_schedule.png" />				
 				</div>
 				<div class="room-schedule">
-					<img class="room-schedule-button" src="..\assets\images\room_schedule.png">				
+					<img class="room-schedule-button" src="..\assets\images\room_schedule.png" />				
 				</div>
 				
 				<div class="buttons">
+					<div class="time-button">
+						<img class="time-icon" src="..\assets\images\time_button.png" />
+					</div>
 					<div class="full-screen-button">
 						<img class="full-screen-icon" src="..\assets\images\full_screen_icon.png" />
 					</div>
@@ -37,5 +40,3 @@ export default {};
 <style lang="scss" scoped>
 @import "../assets/css/header-style.css";
 </style>
-
-
