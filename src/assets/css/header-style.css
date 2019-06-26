@@ -13,6 +13,7 @@ header{
 .left-nav-bar{
 	padding-left: 1vw;
 	width: 22vw;
+	height: 8vh;
 	
 	display: flex;
 	flex-direction: row;
@@ -23,7 +24,7 @@ header{
 /*menu button*/
 .menu-button{
 	width: 2.2vw;
-	height: 4.75vh;
+	height: 4.95vh;
 	border-radius: 50%;
 	
 	cursor: pointer;
@@ -45,7 +46,7 @@ header{
 
 /*university logo*/
 .logo{
-	width: 17.5vw;
+	width: 17vw;
 	height: 12.3vh;
 	position: relative;
 	right: 0.5vw;
@@ -78,7 +79,6 @@ header{
 	height: 6.5vh;
 	position: relative;
 	top: 1vh;
-	transition: filter 0.3s;
 }
 .academic-schedule-button:hover{
 	filter: contrast(180%);
@@ -95,7 +95,6 @@ header{
 	height: 6.5vh;
 	position: relative;
 	top: 1vh;
-	transition: filter 0.3s;
 }
 .room-schedule-button:hover{
 	filter: contrast(180%);
@@ -106,7 +105,8 @@ header{
 /*buttons side*/
 .buttons{
 	padding-right: 1vw;
-	width: 6vw;
+	width: 10vw;
+	height: 8vh;
 	
 	display: flex;
 	flex-direction: row;
@@ -114,11 +114,32 @@ header{
 	align-items: center;
 }
 
-
+/**/
+.time-button{
+	width: 2.2vw;
+	height:4.95vh;
+	border-radius: 50%;
+	visibility: hidden;
+	
+	cursor: pointer;
+	background-color: white;
+	transition: background-color 0.3s;
+}
+.time-button:hover {
+	background-color: rgba(170, 170, 170, 0.5);
+}
+.time-icon{
+	width: 1.4vw;
+	height: 3.3vh;
+	position: relative;
+	left: 0.45vw;
+	top: 0.3vh;
+}
+/**/
 /*full-screen button*/
 .full-screen-button{
 	width: 2.2vw;
-	height:4.75vh;
+	height:4.95vh;
 	border-radius: 50%;
 	
 	cursor: pointer;
@@ -130,19 +151,19 @@ header{
 }
 .full-screen-icon{
 	width: 1.35vw;
-	height: 2.8vh;
+	height: 2.9vh;
 	position: relative;
-	left: 0.4vw;
+	left: 0.45vw;
+	top: 0.1vh;
 }
 /*full-screen button end*/
 
 /*profile button*/
 .profile-button{
 	width: 2.2vw;
-	height:4.75vh;
+	height:4.95vh;
 	border-radius: 50%;
 	right: 1vw;
-	top: 0.1vh;
 	
 	background-color: white;
 	transition: background-color 0.3s;
@@ -152,9 +173,9 @@ header{
 }
 .profile-icon{
 	width: 1.35vw;
-	height: 3vh;
+	height: 3.2vh;
 	position: relative;
-	top: 0.2vh;
+	top: 0.4vh;
 	left: 0.4vw;
 }
 /*profile button end*/
