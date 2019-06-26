@@ -3,7 +3,7 @@
 			
 			<div class="left-nav-bar">
 				<div class="menu-circle"></div>
-				<img class="menu" src="../assets/images/menu-icon.png" />
+				<img class="menu" src="../assets/images/menu_icon.png" />
 				<img class="logo" src="../assets/images/IU_logo_RGB_2.png" /> 
 			</div>
 			
