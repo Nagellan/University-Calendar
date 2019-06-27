@@ -38,19 +38,19 @@ const state = {
       groups: [
         {
           name: "1",
-          isActive: true
+          isActive: true,
         },
         {
           name: "2",
-          isActive: false
+          isActive: true,
         },
         {
           name: "3",
-          isActive: false
+          isActive: true,
         },
         {
           name: "4",
-          isActive: false
+          isActive: false,
         }
       ]
     },
@@ -60,19 +60,19 @@ const state = {
       groups: [
         {
           name: "1",
-          isActive: true
+          isActive: false,
         },
         {
           name: "2",
-          isActive: false
+          isActive: false,
         },
         {
           name: "3",
-          isActive: false
+          isActive: false,
         },
         {
           name: "4",
-          isActive: false
+          isActive: false,
         }
       ]
     },
@@ -128,7 +128,7 @@ const state = {
     },
     {
       name: "MS2",
-      isActive: true,
+      isActive: false,
       groups: [
         {
           name: "1",
@@ -156,28 +156,9 @@ const state = {
       floor: 3,
       isActive: true,
       rooms: [
-        300,
-        301,
-        302,
-        303,
-        304,
-        305,
-        306,
-        307,
-        308,
-        309,
-        310,
-        311,
-        312,
-        313,
-        314,
-        315,
-        316,
-        317,
-        318,
-        319,
-        320,
-        321
+        300, 301, 302, 303, 304, 305, 306, 307, 308,
+        309, 310, 311, 312, 313, 314, 315, 316, 317,
+        318, 319, 320, 321
       ]
     }
   ],
@@ -194,7 +175,7 @@ const state = {
               room: 108,
               name: "Discrete Math and Logic",
               organizer: "Nikolay Shilov",
-              groups: ["BS1-1", "BS1-2"]
+              groups: ["BS1-1", "BS1-2", "BS1-3"]
             }
           ]
         },
@@ -321,27 +302,27 @@ const getters = {
 };
 
 const mutations = {
-  setDayStatus: (state, payload) => {
+  setDaysStatuses: (state, payload) => {
     state.daysStatuses = payload;
   },
   setActiveRoom: (state, payload) => {
     state.roomActive = payload;
   },
-    setCourses: (state, payload) => {
-        state.courses = payload;
-    }
+  setCourses: (state, payload) => {
+    state.courses = payload;
+  }
 };
 
 const actions = {
-  setDayStatus: async (context, payload) => {
-    context.commit("setDayStatus", payload);
+  setDaysStatuses: async (context, payload) => {
+    context.commit("setDaysStatuses", payload);
   },
   setActiveRoom: (context, payload) => {
     context.commit("setActiveRoom", payload);
   },
-    setCourses: (context, payload) => {
-        context.commit("setCourses", payload);
-    }
+  setCourses: (context, payload) => {
+    context.commit("setCourses", payload);
+  }
 };
 
 export default {
