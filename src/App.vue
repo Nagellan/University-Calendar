@@ -22,6 +22,6 @@ export default {
   padding: 0;
   border: 0;
   outline: 0;
-  font-family: 'Elektra';
+  font-family: "Elektra";
 }
 </style>
