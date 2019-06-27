@@ -1,183 +1,76 @@
-header{
+header {
+	line-height: 0;
 	display: flex;
 	flex-direction: row;
-	justify-content: flex-start;
-	align-items: center;
-	overflow: hidden;
-	font-size: 4.2vh;
+	align-items: stretch;
 }
 
-
-
-/*menu and logo side*/
-.left-nav-bar{
-	padding-left: 1vw;
-	width: 22vw;
-	height: 8vh;
-	
-	display: flex;
-	flex-direction: row;
-	justify-content: flex-start;
-	align-items: center;
-}
-
-/*menu button*/
-.menu-button{
-	width: 2.2vw;
-	height: 4.95vh;
-	border-radius: 50%;
-	
-	cursor: pointer;
-	background-color: white;
+button,
+.academic-schedule {
 	transition: background-color 0.3s;
+	cursor: pointer;
 }
-.menu-button:hover {
-	background-color: rgba(170, 170, 170, 0.5);
+
+button {
+	line-height: 0;
+	height: 5vh;
+	width: 5vh;
+	background-color: unset;
+	border-radius: 50%;
 }
-.menu-icon{
-	width: 1.5vw;
-	height: 2.5vh;
 
-	position: relative;
-	left: 0.35vw;
-	bottom: 0.2vh;
+button:hover {
+	background-color: rgba(1,1,1,0.15);
 }
-/*menu button end*/
 
-/*university logo*/
-.logo{
-	width: 17vw;
-	height: 12.3vh;
-	position: relative;
-	right: 0.5vw;
+button img {
+	height: 50%;
+	width: 50%;
 }
-/*university logo*/
-/*menu and logo side end*/
 
-
-
-
-/*right navigation bar side*/
-.right-nav-bar{
-	width: 78vw;
-	height: 8vh;
-	
+.left-nav-bar,
+.right-nav-bar {
 	display: flex;
+	align-items: center;
 	flex-direction: row;
 	justify-content: space-between;
-	align-items: center;
 }
 
+.left-nav-bar {
+	flex: 2;
+}
 
-/*academic schedule button*/
-.academic-schedule{
-	display: inline;
-	cursor: pointer;
+.left-nav-bar .menu-button{
+	margin-left: 1.2vw;
 }
-.academic-schedule-button{
-	width: 21.2vw;
-	height: 6.5vh;
-	position: relative;
-	top: 1vh;
-}
-.academic-schedule-button:hover{
-	filter: contrast(180%);
-}
-/*academic schedule button end*/
 
-/*room schedule button*/
-.room-schedule{
-	display: none;
-	cursor: pointer;
+.left-nav-bar .logo{
+	width: 60%;
+	margin-right: 1.2vw;
 }
-.room-schedule-button{
-	width: 17.5vw;
-	height: 6.5vh;
-	position: relative;
-	top: 1vh;
-}
-.room-schedule-button:hover{
-	filter: contrast(180%);
-}
-/*room schedule button end*/
 
+.right-nav-bar {
+	flex: 9;
+}
 
-/*buttons side*/
-.buttons{
-	padding-right: 1vw;
-	width: 10vw;
-	height: 8vh;
-	
+.right-nav-bar .academic-schedule {
+	font-size: 4vh;
+	font-weight: 600;
+	line-height: 7.8vh;
+
+	padding: 0 3vh;
+	align-self: stretch;
+}
+
+.right-nav-bar .academic-schedule:hover {
+	background-color: rgba(1,1,1,0.15);
+}
+
+.right-nav-bar .buttons {
 	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	align-items: center;
+	flex-wrap: nowrap;
 }
 
-/**/
-.time-button{
-	width: 2.2vw;
-	height:4.95vh;
-	border-radius: 50%;
-	visibility: hidden;
-	
-	cursor: pointer;
-	background-color: white;
-	transition: background-color 0.3s;
+.right-nav-bar .buttons button {
+	margin-right: 1.2vw;
 }
-.time-button:hover {
-	background-color: rgba(170, 170, 170, 0.5);
-}
-.time-icon{
-	width: 1.4vw;
-	height: 3.3vh;
-	position: relative;
-	left: 0.45vw;
-	top: 0.3vh;
-}
-/**/
-/*full-screen button*/
-.full-screen-button{
-	width: 2.2vw;
-	height:4.95vh;
-	border-radius: 50%;
-	
-	cursor: pointer;
-	background-color: white;
-	transition: background-color 0.3s;
-}
-.full-screen-button:hover {
-	background-color: rgba(170, 170, 170, 0.5);
-}
-.full-screen-icon{
-	width: 1.35vw;
-	height: 2.9vh;
-	position: relative;
-	left: 0.45vw;
-	top: 0.1vh;
-}
-/*full-screen button end*/
-
-/*profile button*/
-.profile-button{
-	width: 2.2vw;
-	height:4.95vh;
-	border-radius: 50%;
-	right: 1vw;
-	
-	background-color: white;
-	transition: background-color 0.3s;
-}
-.profile-button:hover {
-	background-color: rgba(170, 170, 170, 0.5);
-}
-.profile-icon{
-	width: 1.35vw;
-	height: 3.2vh;
-	position: relative;
-	top: 0.4vh;
-	left: 0.4vw;
-}
-/*profile button end*/
-/*buttons side end*/
-/*right navigation bar side end*/

@@ -4,18 +4,6 @@ aside {
     overflow-x: hidden;
 }
 
-::-webkit-scrollbar {
-    width: 3px;
-    background-color: #F5F5F5;
-}
-
-::-webkit-scrollbar-thumb {
-    width: 8px;
-    border-radius: 1vw;
-    background: #c4c4c4;
-}
-
-
 .item {
     height: 2vw;
 }
@@ -102,7 +90,7 @@ aside {
     line-height: 1.5vw;
     height: 1.46vw;
     overflow: hidden;
-    transition: 0.4s;
+    transition: height 0.4s;
 }
 
 .dropdown.active {
@@ -179,7 +167,7 @@ aside {
     height: 1.6vw;
     width: 1.6vw;
     border-radius: 0.1vw;
-    transition: all 0.2s ease-out 0s;
+    transition: background 0.2s ease-out 0s;
     background: #cbd1d8;
     border: none;
     color: #fff;

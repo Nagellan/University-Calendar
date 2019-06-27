@@ -2,32 +2,31 @@
   		<header>
 			
 			<div class="left-nav-bar">
-				<div class="menu-button">
-					<img class="menu-icon" src="..\assets\images\menu_icon.png" />
-				</div>
-				<img class="logo" src="..\assets\images\IU_logo_RGB_2.png" /> 
+				<button class="menu-button">
+					<img class="menu-icon" src="..\assets\images\menu_icon.svg" />
+				</button>
+				<img class="logo" src="..\assets\images\IU_logo.png" /> 
 			</div>
 			
 			<div class="right-nav-bar">
 				<div class="academic-schedule">
-					<img class="academic-schedule-button" src="..\assets\images\academic_schedule.png" />				
-				</div>
-				<div class="room-schedule">
-					<img class="room-schedule-button" src="..\assets\images\room_schedule.png" />				
+					Academic Schedule
 				</div>
 				
 				<div class="buttons">
-					<div class="time-button">
-						<img class="time-icon" src="..\assets\images\time_button.png" />
-					</div>
-					<div class="full-screen-button">
-						<img class="full-screen-icon" src="..\assets\images\full_screen_icon.png" />
-					</div>
-					<div class="profile-button">
+					<button class="time-button">
+						<img class="time-icon" src="..\assets\images\clock_icon.svg" />
+					</button>
+
+					<button class="full-screen-button">
+						<img class="full-screen-icon" src="..\assets\images\fullscreen_icon.png" />
+					</button>
+
+					<button class="profile-button">
 						<a href="https://my.university.innopolis.ru/" target="_blank">
-							<img class="profile-icon" src="..\assets\images\profile-icon.png"/>
+							<img class="profile-icon" src="..\assets\images\user_icon.png"/>
 						</a>
-					</div>
+					</button>
 				</div>
 			</div>
 		</header>
