@@ -303,7 +303,7 @@ const getters = {
 
 const mutations = {
   setDaysStatuses: (state, payload) => {
-    state.days = payload;
+    state.daysStatuses = payload;
   },
   setActiveRoom: (state, payload) => {
     state.roomActive = payload;

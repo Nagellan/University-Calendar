@@ -20,7 +20,7 @@ aside {
     border-right: 0.1vw inset #dadce0;
 
     flex: 2;
-    
+
     transition: flex ease-in 0.2s;
 }
 
