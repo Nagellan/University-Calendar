@@ -8,14 +8,17 @@
 					v-for="group in groups"
 					:key="group.name"
 					:style="[group.isActive ? {'flex-grow': 1} : {'border': 0}]"
-				>{{ group.name }}</div>
+				>
+					{{ group.name }}
+				</div>
 			</div>
 		</div>
 
 		<day
-			v-for="day in presentDaysNames"
-			:key="day"
-			:dayName="day"
+			v-for="day in this.daysStatuses"
+			:key="day.name"
+			:dayName="day.name"
+			:style="[day.isActive ? {'max-height': '100vh'} : '']"
 		/>
 	</main>
 </template>
@@ -25,19 +28,7 @@ import Vue from "vue";
 import day from "./additional components/day";
 
 export default {
-	methods: {
-		getTimeSlots(dayName) {
-			return this.schedule
-				.filter(day => day.name == dayName)
-				.map(day => day.timeSlots)[0];
-		}
-	},
 	computed: {
-		presentDaysNames: function() {
-			return this.daysStatuses
-				.filter(day => day.isActive)
-				.map(day => day.name);
-		},
 		groups: function() {
 			return this.courses
 				.map(course =>

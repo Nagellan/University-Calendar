@@ -51,6 +51,13 @@ main {
     background-color: rgba(255, 255, 255, 0.9);
 }
 
+.day {
+    height: auto;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease-out;
+}
+
 .day:last-child {
     margin-bottom: 8vh;
 }

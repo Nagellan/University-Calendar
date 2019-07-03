@@ -69,7 +69,7 @@ export default {
   methods: {
     changeStatus(num) {
       this.dayStatus[num].isActive = !this.dayStatus[num].isActive;
-      this.$store.dispatch("setDayStatus", this.dayStatus);
+      this.$store.dispatch("setDaysStatuses", this.dayStatus);
     }
   }
 };
