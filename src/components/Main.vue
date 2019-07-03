@@ -18,7 +18,7 @@
 			v-for="day in this.daysStatuses"
 			:key="day.name"
 			:dayName="day.name"
-			:style="[day.isActive ? {'max-height': '100vh'} : '']"
+			:isActive="day.isActive"
 		/>
 	</main>
 </template>

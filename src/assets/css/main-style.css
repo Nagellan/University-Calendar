@@ -52,10 +52,8 @@ main {
 }
 
 .day {
-    height: auto;
-    max-height: 0;
+    max-height: 100vh;
     overflow: hidden;
-    transition: max-height 0.35s ease-out;
 }
 
 .day:last-child {
@@ -161,4 +159,19 @@ main {
     margin-top: 0.3vh;
     font-size: 2.1vh;
     font-weight: 200;
+}
+
+
+/* Day checking animations */
+
+.day-enter-active,
+.day-leave-active {
+  transition: all .4s ease-out;
+}
+
+.day-enter, 
+.day-leave-to {
+	opacity: 0;
+    transform: translateY(2vh);
+    max-height: 0;
 }
