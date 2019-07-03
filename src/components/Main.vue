@@ -1,8 +1,16 @@
 <template>
 	<main>
-		<groups-title 
-      :groupNames="presentGroupsNames"
-    />
+		<div id="groups-title">
+			<div class="row">
+				<div class="time-cell"></div>
+				<div
+					class="cell"
+					v-for="group in groups"
+					:key="group.name"
+					:style="[group.isActive ? {'flex-grow': 1} : {'border': 0}]"
+				>{{ group.name }}</div>
+			</div>
+		</div>
 
 		<day
 			v-for="day in presentDaysNames"
@@ -16,22 +24,6 @@
 import Vue from "vue";
 import day from "./additional components/day";
 
-Vue.component("groups-title", {
-	render(h) {
-		return h("div", { attrs: {
-				id: "groups-title"
-			} }, [
-			h("div", { class: "row" }, [
-				h("div", { class: "time-cell" }),
-				...this.groupNames.map(group => 
-					h("div", { class: "cell" }, group)
-				)
-			])
-		]);
-	},
-	props: ["groupNames"]
-});
-
 export default {
 	methods: {
 		getTimeSlots(dayName) {
@@ -42,14 +34,20 @@ export default {
 	},
 	computed: {
 		presentDaysNames: function() {
-			return this.daysStatuses.filter(day => day.isActive).map(day => day.name);
+			return this.daysStatuses
+				.filter(day => day.isActive)
+				.map(day => day.name);
 		},
-		presentGroupsNames: function() {
+		groups: function() {
 			return this.courses
 				.map(course =>
 					course.groups
-						.filter(group => group.isActive)
-						.map(group => course.name + "-" + group.name)
+						.map(group => {
+							return {
+								name: course.name + "-" + group.name,
+								isActive: group.isActive
+							};
+						})
 				)
 				.reduce((prev, group) => prev.concat(group));
 		}
