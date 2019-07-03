@@ -13,6 +13,7 @@ main {
 
 .cell {
     flex-grow: 1;
+    width: 0;
     overflow: hidden;
     transition: flex-grow 0.2s ease;
 }
@@ -36,9 +37,6 @@ main {
 }
 
 #groups-title .cell {
-    flex-grow: 0;
-    width: 0;
-
     font-size: 3vh;
     font-weight: 600;
     letter-spacing: -0.1vh;
@@ -153,6 +151,7 @@ main {
     font-size: 2.6vh;
     font-weight: 600;
     line-height: 2vh;
+    white-space: nowrap;
 }
 
 .day-schedule .cell .organizer {
@@ -166,7 +165,7 @@ main {
 
 .day-enter-active,
 .day-leave-active {
-  transition: all .4s ease-out;
+  transition: all .35s ease-out;
 }
 
 .day-enter, 
@@ -174,4 +173,18 @@ main {
 	opacity: 0;
     transform: translateY(2vh);
     max-height: 0;
+}
+
+/* Groups checking animations */
+
+.group-enter-active,
+.group-leave-active {
+  transition: all .25s ease-out;
+}
+
+.group-enter, 
+.group-leave-to {
+    flex-grow: 0;
+    border: 0;
+    color: transparent;
 }

@@ -1,8 +1,8 @@
 <template>
 	<transition name="day">
-		<div class="day" v-if="isActive">
+		<div class="day" v-if="this.day.isActive">
 			<div class="day-title">
-				<div class="day-name">{{ this.dayName }}</div>
+				<div class="day-name">{{ this.day.name }}</div>
 				<div class="day-title-separator"></div>
 			</div>
 
@@ -13,49 +13,25 @@
 					</div>
 
 					<div class="cells-wrapper">
-						<div class="cell">
-							<div class="left-col">
-								<div class="room">108</div>
-								<div class="type">lecture</div>
-							</div>
+						<template v-for="group in groups">
+							<transition name="group">
+								<div
+									class="cell"
+									:key="group.name"
+									v-if="group.isActive"
+								>
+									<div class="left-col">
+										<div class="room">108</div>
+										<div class="type">lecture</div>
+									</div>
 
-							<div class="right-col">
-								<div class="name">Discrete Math & Logic</div>
-								<div class="organizer">Nikolay Shilov</div>
-							</div>
-						</div>
-
-						<div class="cell">
-							<div class="left-col">
-								<div class="room">108</div>
-								<div class="type">lecture</div>
-							</div>
-
-							<div class="right-col">
-								<div class="name">Discrete Math & Logic</div>
-								<div class="organizer">Nikolay Shilov</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="time-cell">
-						10:30<br>12:00
-					</div>
-
-					<div class="cells-wrapper">
-						<div class="cell">
-							<div class="left-col">
-								<div class="room">108</div>
-								<div class="type">lecture</div>
-							</div>
-
-							<div class="right-col">
-								<div class="name">Discrete Math & Logic</div>
-								<div class="organizer">Nikolay Shilov</div>
-							</div>
-						</div>
+									<div class="right-col">
+										<div class="name">Discrete Math & Logic</div>
+										<div class="organizer">Nikolay Shilov</div>
+									</div>
+								</div>
+							</transition>
+						</template>
 					</div>
 				</div>
 			</div>
@@ -70,7 +46,7 @@ export default {
 			schedule: this.$store.getters.getSchedule
 		};
   },
-  props: ['dayName', 'isActive']
+  props: ['day', 'groups']
 };
 </script>
 

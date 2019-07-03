@@ -3,22 +3,25 @@
 		<div id="groups-title">
 			<div class="row">
 				<div class="time-cell"></div>
-				<div
-					class="cell"
-					v-for="group in groups"
-					:key="group.name"
-					:style="[group.isActive ? {'flex-grow': 1} : {'border': 0}]"
-				>
-					{{ group.name }}
-				</div>
+				<template v-for="group in groups">
+					<transition name="group">
+						<div
+							class="cell"
+							:key="group.name"
+							v-if="group.isActive"
+						>
+								{{ group.name }}
+						</div>
+					</transition>
+				</template>
 			</div>
 		</div>
 
 		<day
 			v-for="day in this.daysStatuses"
 			:key="day.name"
-			:dayName="day.name"
-			:isActive="day.isActive"
+			:day="day"
+			:groups="groups"
 		/>
 	</main>
 </template>
