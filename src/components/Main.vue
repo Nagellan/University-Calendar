@@ -50,7 +50,6 @@ export default {
 		return {
 			daysStatuses: this.$store.getters.getDaysStatuses,
 			courses: this.$store.getters.getCourses,
-			schedule: this.$store.getters.getSchedule
 		};
 	},
 	components: {
