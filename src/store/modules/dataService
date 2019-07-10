@@ -38,19 +38,19 @@ const state = {
       groups: [
         {
           name: "1",
-          isActive: true,
+          isActive: true
         },
         {
           name: "2",
-          isActive: true,
+          isActive: true
         },
         {
           name: "3",
-          isActive: true,
+          isActive: true
         },
         {
           name: "4",
-          isActive: false,
+          isActive: false
         }
       ]
     },
@@ -60,19 +60,19 @@ const state = {
       groups: [
         {
           name: "1",
-          isActive: false,
+          isActive: false
         },
         {
           name: "2",
-          isActive: false,
+          isActive: false
         },
         {
           name: "3",
-          isActive: false,
+          isActive: false
         },
         {
           name: "4",
-          isActive: false,
+          isActive: false
         }
       ]
     },
@@ -156,9 +156,28 @@ const state = {
       floor: 3,
       isActive: true,
       rooms: [
-        300, 301, 302, 303, 304, 305, 306, 307, 308,
-        309, 310, 311, 312, 313, 314, 315, 316, 317,
-        318, 319, 320, 321
+        300,
+        301,
+        302,
+        303,
+        304,
+        305,
+        306,
+        307,
+        308,
+        309,
+        310,
+        311,
+        312,
+        313,
+        314,
+        315,
+        316,
+        317,
+        318,
+        319,
+        320,
+        321
       ]
     }
   ],
