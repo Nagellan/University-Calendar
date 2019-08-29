@@ -4,32 +4,30 @@ main {
     position: relative;
 }
 
-main * {
-    line-height: 0;
-}
-
-table {
-    border-collapse: collapse;
-    width: 100%;
-}
-
-tr,
-.day-title {
+.row {
     height: 8vh;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
 }
 
 .cell {
-    text-align: center;
-    background-color: rgba(255, 255, 255, 0.4);
+    flex-grow: 1;
+    width: 0;
+    overflow: hidden;
+    transition: flex-grow 0.2s ease;
 }
 
 .time-cell {
-    width: 6vw;
+    align-self: center;
+    width: 8vh;
+    padding-right: 1vh;
+    flex-shrink: 0;
+
     text-align: right;
-    color: rgba(1, 1, 1, 0.25);
     font-size: 1.9vh;
-    padding-right: 1vw;
     line-height: 2.5vh;
+    color: rgba(1, 1, 1, 0.25);
 }
 
 #groups-title {
@@ -43,6 +41,8 @@ tr,
     font-size: 3vh;
     font-weight: 600;
     letter-spacing: -0.1vh;
+    text-align: center;
+    line-height: 8vh;
 
     border: 0.1vh solid rgba(1,1,1,0.1);
     border-top: 0;
@@ -51,27 +51,34 @@ tr,
 }
 
 .day {
-    width: 100%;
+    max-height: 100vh;
+    overflow: hidden;
+}
+
+.day:last-child {
+    margin-bottom: 8vh;
 }
 
 .day .day-title {
-    padding-left: 1.2vw;
     display: flex;
     flex-direction: row;
     align-items: center;
+}
+
+.day-title .day-name {
+    padding: 0 2vh;
+    flex-grow: 1;
+    height: 100%;
 
     font-size: 3vh;
     font-weight: 600;
     letter-spacing: -0.1vh;
+    line-height: 8vh;
     color: rgba(1,1,1,0.4);
 }
 
-.day-title .day-name {
-    flex-grow: 1;
-}
-
 .day-title .day-title-separator {
-    flex-grow: 13;
+    flex-grow: 28;
     height: 0.48vh;
     background-color: rgba(1, 1, 1, 0.1);
     border-top-left-radius: 1vh;
@@ -79,61 +86,106 @@ tr,
 }
 
 .day-schedule {
-    table-layout: fixed;
-    width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
-.day-schedule .row:last-child .cell:nth-child(2) {
-    border-bottom-left-radius: 1.2vh;
-}
-
-.day-schedule .cell {
+.day-schedule .cells-wrapper {
+    display: flex;
+    flex-grow: 1;
     background-color: rgba(255, 255, 255, 0.5);
 }
 
-.day-schedule .cell:not(:last-child) {
+.day-schedule .row:last-child .cells-wrapper {
+    border-bottom-left-radius: 1.2vh;
+}
+
+.day-schedule .cells-wrapper .cell:not(:last-child) {
     border-right: 0.1vw solid rgba(1,1,1,0.1);
 }
 
-.day-schedule .row:not(:last-child) .cell:not(:first-child) {
+.day-schedule .row:not(:last-child) .cells-wrapper{
     border-bottom: 0.1vw solid rgba(1,1,1,0.1);
 }
 
-.cell > * {
-    vertical-align: middle;
-    width: 50%;
-    display: inline-block;
-    text-align: left;
-    padding: 1.5vh 0;
+.day-schedule .cell {
+    display: flex;
+    flex-direction: row;
 }
 
-.cell .col-1 {
-    text-align: right;
-    padding-right: 2vw;
+.day-schedule .cell > * {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: center;
 }
 
-.cell .col-1 .room {
+.day-schedule .left-col {
+    align-items: flex-end;
+}
+
+.day-schedule .right-col {
+    padding-left: 2vh;
+    align-items: flex-start;
+}
+
+.day-schedule .cell .left-col > *,
+.day-schedule .cell .right-col > *{
+    max-height: 50%;
+    display: flex;
+}
+
+.day-schedule .cell .room {
     font-size: 3vh;
     font-weight: 600;
-    line-height: 2.8vh;
+    line-height: 2.6vh;
 }
 
-.cell .col-1 .type {
+.day-schedule .cell .type {
     font-size: 1.8vh;
     font-weight: 200;
     text-transform: uppercase;
-    line-height: 2vh;
+    overflow: hidden;
 }
 
-.cell .col-2 .name {
+.day-schedule .cell .name {
     font-size: 2.6vh;
     font-weight: 600;
-    line-height: 2.3vh;
+    line-height: 2vh;
+    white-space: nowrap;
 }
 
-.cell .col-2 .organizer {
+.day-schedule .cell .organizer {
     margin-top: 0.3vh;
     font-size: 2.1vh;
     font-weight: 200;
-    line-height: 2.1vh;
+    white-space: nowrap;
+}
+
+
+/* Day checking animations */
+
+.day-enter-active,
+.day-leave-active {
+  transition: all .35s ease-out;
+}
+
+.day-enter, 
+.day-leave-to {
+	opacity: 0;
+    transform: translateY(2vh);
+    max-height: 0;
+}
+
+/* Groups checking animations */
+
+.group-enter-active,
+.group-leave-active {
+  transition: all .25s ease-out;
+}
+
+.group-enter, 
+.group-leave-to {
+    flex-grow: 0;
+    border: 0;
 }
