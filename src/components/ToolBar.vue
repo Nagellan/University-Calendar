@@ -1,5 +1,5 @@
 <template>
-  <aside>
+  <aside v-if="statusToolBar === true">
     <div class="item label">Days</div>
     <Days />
     <div v-if="scheduleStatus === 'Room'" class="item label">Rooms</div>
@@ -93,6 +93,11 @@ export default {
         isActive: !this.floors[index].isActive,
         rooms: this.floors[index].rooms
       });
+    }
+  },
+  computed: {
+    statusToolBar: function() {
+      return this.$store.getters.getToolBarStatus;
     }
   },
   components: {
