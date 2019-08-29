@@ -1,10 +1,12 @@
 <template>
-  <aside>
+<transition name="toolbar">
+  <aside v-if="statusToolBar === true">
+    <div>
     <div class="item label">Days</div>
     <Days />
-    <div v-if="scheduleStatus === 'Room'" class="item label">Rooms</div>
+    <div v-if="scheduleStatus === 1" class="item label">Rooms</div>
     <div
-      v-if="scheduleStatus === 'Room'"
+      v-if="scheduleStatus === 1"
       class="list"
       v-for="(item, index) in floors"
     >
@@ -26,9 +28,9 @@
       </div>
     </div>
 
-    <div v-if="scheduleStatus === 'Academic'" class="item label">Courses</div>
+    <div v-if="scheduleStatus === 0" class="item label">Courses</div>
     <div
-      v-if="scheduleStatus === 'Academic'"
+      v-if="scheduleStatus === 0"
       class="list"
       v-for="(item, index) in courses"
     >
@@ -52,7 +54,9 @@
         </div>
       </div>
     </div>
+    </div>
   </aside>
+</transition>
 </template>
 
 <script>
@@ -64,7 +68,6 @@ export default {
       courses: this.$store.getters.getCourses,
       floors: this.$store.getters.getFloors,
       roomActive: this.$store.getters.getActiveRoom,
-      scheduleStatus: this.$store.getters.getScheduleStatus
     };
   },
   methods: {
@@ -93,6 +96,14 @@ export default {
         isActive: !this.floors[index].isActive,
         rooms: this.floors[index].rooms
       });
+    }
+  },
+  computed: {
+    statusToolBar: function() {
+      return this.$store.getters.getToolBarStatus;
+    },
+    scheduleStatus: function() {
+      return this.$store.getters.getScheduleStatus;
     }
   },
   components: {

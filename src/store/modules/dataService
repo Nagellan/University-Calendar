@@ -29,8 +29,14 @@ const state = {
       isActive: false
     }
   ],
+  statusToolBar: true,
   roomActive: 108,
-  scheduleStatus: "Academic",
+  scheduleStatus: 0,
+  scheduleTypes: [
+    "Academic Schedule",
+    "Room Schedule",
+    "Personal Calendar"
+  ],
   courses: [
     {
       name: "BS1",
@@ -309,6 +315,9 @@ const getters = {
   getScheduleStatus: state => {
     return state.scheduleStatus;
   },
+  getScheduleTypes: state => {
+    return state.scheduleTypes;
+  },
   getCourses: state => {
     return state.courses;
   },
@@ -317,6 +326,9 @@ const getters = {
   },
   getSchedule: state => {
     return state.schedule;
+  },
+  getToolBarStatus: state => {
+    return state.statusToolBar;
   }
 };
 
@@ -329,7 +341,13 @@ const mutations = {
   },
   setCourses: (state, payload) => {
     state.courses = payload;
-  }
+  },
+  setToolBarStatus: state => {
+    state.statusToolBar = !state.statusToolBar;
+  },
+  setScheduleStatus: (state, payload) => {
+    state.scheduleStatus = payload;
+  },
 };
 
 const actions = {
@@ -341,7 +359,13 @@ const actions = {
   },
   setCourses: (context, payload) => {
     context.commit("setCourses", payload);
-  }
+  },
+  setToolBarStatus: context => {
+    context.commit("setToolBarStatus");
+  },
+  setScheduleStatus: (context, payload) => {
+    context.commit("setScheduleStatus", payload);
+  },
 };
 
 export default {
