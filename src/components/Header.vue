@@ -8,12 +8,19 @@
     </div>
 
     <div class="right-nav-bar">
-      <div class="academic-schedule">
-        Academic Schedule
+      <div class="schedule-type" @click="activate()">
+        {{ this.scheduleTypes[scheduleStatus] }}
+				<div class="sch-drop-down" :class="{'active' : this.dropDownIsActive}">
+					<div v-for="(schType, index) in scheduleTypes" :key="schType" @click="switchSchType(index)">
+						<template v-if="index != scheduleStatus">
+							{{ schType }}
+						</template>
+					</div>
+				</div>
       </div>
 
       <div class="buttons">
-        <button class="time-button">
+        <button class="time-button" v-if="scheduleStatus == 1">
           <img class="time-icon" src="..\assets\images\clock_icon.svg" />
         </button>
 
@@ -38,14 +45,23 @@
 export default {
   data() {
     return {
-      statusToolBar: this.$store.getters.getToolBarStatus
+			statusToolBar: this.$store.getters.getToolBarStatus,
+			scheduleStatus: this.$store.getters.getScheduleStatus,
+			scheduleTypes: this.$store.getters.getScheduleTypes,
+			dropDownIsActive: false
     };
   },
   methods: {
+		switchSchType(schStatus) {
+			this.$store.dispatch("setScheduleStatus", schStatus);
+			this.scheduleStatus = schStatus;
+		},
     changeStatusToolBar() {
       this.$store.dispatch("setToolBarStatus", !this.statusToolBar);
-      this.statusToolBar = !this.statusToolBar;
-    }
+		},
+		activate() {
+			this.dropDownIsActive = !this.dropDownIsActive;
+		}
   }
 };
 </script>

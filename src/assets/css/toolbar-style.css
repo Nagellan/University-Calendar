@@ -4,18 +4,23 @@ aside {
     overflow-x: hidden;
 }
 
+aside > * {
+    flex-basis: 0;
+    flex-shrink: 1;
+    width: 18vw;
+}
+
 ::-webkit-scrollbar {
-    width: 3px;
+    width: 0.8vh;
 }
 
 ::-webkit-scrollbar-track {
-    background: #ffffff;
-    border-radius: 3px;
+    background: rgba(1,1,1,0.1);
+    border-radius: 0.1vh;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #ffffff;
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+    background: rgba(1,1,1,0.15);
 }
 
 .item {
@@ -222,4 +227,14 @@ aside {
     animation: click-wave 0.65s;
     background: #2172CD;
     content: '';
+}
+
+.toolbar-enter-active,
+.toolbar-leave-active {
+    transition: flex 0.3s ease;
+}
+
+.toolbar-enter,
+.toolbar-leave-to {
+    flex: 0;
 }

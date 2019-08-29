@@ -3,10 +3,11 @@ header {
 	display: flex;
 	flex-direction: row;
 	align-items: stretch;
+	z-index: 12;
 }
 
 button,
-.academic-schedule {
+.schedule-type {
 	transition: background-color 0.3s;
 	cursor: pointer;
 }
@@ -53,7 +54,10 @@ button img {
 	flex: 9;
 }
 
-.right-nav-bar .academic-schedule {
+.right-nav-bar .schedule-type {
+	position: relative;
+	width: 45vh;
+
 	font-size: 4vh;
 	font-weight: 600;
 	line-height: 7.8vh;
@@ -62,8 +66,32 @@ button img {
 	align-self: stretch;
 }
 
-.right-nav-bar .academic-schedule:hover {
-	background-color: rgba(1,1,1,0.15);
+.right-nav-bar > .schedule-type:hover {
+	background-color: rgba(1,1,1,0.1);
+}
+
+.right-nav-bar .schedule-type .sch-drop-down {
+	background-color: white;
+	position: absolute;
+	z-index: 11;
+	width: 100%;
+	top: -20vh;
+	left: 0;
+	box-shadow: 0px 5px 28px -3px rgba(0,0,0,0.2);
+	transition: top 0.3s ease;
+}
+
+.right-nav-bar .schedule-type .sch-drop-down > * {
+	transition: background-color 0.3s;
+	padding: 0 3vh;
+}
+
+.right-nav-bar .schedule-type .sch-drop-down > *:hover {
+	background-color: rgba(1,1,1,0.1);
+}
+
+.right-nav-bar .schedule-type .sch-drop-down.active {
+	top: 8vh;
 }
 
 .right-nav-bar .buttons {
