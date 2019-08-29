@@ -21,8 +21,7 @@
             v-for="roomItem in item.rooms"
             v-bind:class="{ activeRoom: roomActive === roomItem }"
             v-on:click="changeActiveRoom(roomItem)"
-          >
-            {{ roomItem }}
+          >{{ roomItem }}
           </div>
         </div>
       </div>
@@ -41,16 +40,16 @@
         </div>
         <div
           v-for="(groupItem, groupIndex) in item.groups"
-          v-on:click="changeActiveGroups(index, groupIndex)"
         >
-          <label style="display: flex; flex-direction: row">
+          <div style="display: flex; flex-direction: row">
             <input
               type="checkbox"
               class="option-input checkbox"
               v-model="groupItem.isActive"
+              v-on:click="changeActiveGroups(index, groupIndex)"
             />
             <div class="group-label">Group {{ groupItem.name }}</div>
-          </label>
+          </div>
         </div>
       </div>
     </div>
