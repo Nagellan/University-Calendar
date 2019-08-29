@@ -9,13 +9,11 @@
 			<div class="day-schedule">
 				<div
 					class="row"
-					v-for="timeSlot in currentDaySchedule"
+					v-for="timeSlot in todaySchedule"
 					:key="timeSlot.startTime"
 				>
 					<div class="time-cell">
-						{{ timeSlot.startTime }}
-						<br>
-						{{ timeSlot.endTime }}
+						{{ timeSlot.startTime }}<br>{{ timeSlot.endTime }}
 					</div>
 
 					<div class="cells-wrapper">
@@ -29,17 +27,15 @@
 									:key="group.name"
 									v-if="group.isActive"
 								>
-									<template v-if="eventExists(timeSlot.events, group.name)">
-										<div class="left-col">
-											<div class="room"> {{ getEventRoom(timeSlot.events, group.name) }} </div>
-											<div class="type"> {{ getEventType(timeSlot.events, group.name) }} </div>
-										</div>
+									<div class="left-col">
+										<div class="room"> {{ getEventData(timeSlot.events, group.name, "room") }} </div>
+										<div class="type"> {{ getEventData(timeSlot.events, group.name, "type") }} </div>
+									</div>
 
-										<div class="right-col">
-											<div class="name"> {{ getEventName(timeSlot.events, group.name) }} </div>
-											<div class="organizer"> {{ getEventOrganizer(timeSlot.events, group.name) }} </div>
-										</div>
-									</template>
+									<div class="right-col">
+										<div class="name"> {{ getEventData(timeSlot.events, group.name, "name") }} </div>
+										<div class="organizer"> {{ getEventData(timeSlot.events, group.name, "organizer") }} </div>
+									</div>
 								</div>
 							</transition>
 						</template>
@@ -53,32 +49,16 @@
 <script>
 export default {
 	methods: {
-		eventExists(events, groupName) {
-			let event = events.filter(event => event.groups.includes(groupName))[0];
-			return event !== undefined;
-		},
-		getEventRoom(events, groupName) {
-			let event = events.filter(event => event.groups.includes(groupName))[0];
-			return event.room;
-		},
-		getEventType(events, groupName) {
-			let event = events.filter(event => event.groups.includes(groupName))[0];
-			return event.type;
-		},
-		getEventName(events, groupName) {
-			let event = events.filter(event => event.groups.includes(groupName))[0];
-			return event.name;
-		},
-		getEventOrganizer(events, groupName) {
-			let event = events.filter(event => event.groups.includes(groupName))[0];
-			return event.organizer;
+		getEventData: function(events, groupName, dataType) {
+			let event = events.filter(event => event.groups.includes(groupName))[0];		
+			return event === undefined ? "" : event[dataType];
 		}
 	},
 	computed: {
-		currentDaySchedule: function() {			
+		todaySchedule: function() {
 			return this.schedule
 				.filter(day => day.name == this.day.name)
-				.map(day => day.timeSlots)[0];
+				.map(day => day.timeSlots)[0] || [];
 		}
 	},
   data() {

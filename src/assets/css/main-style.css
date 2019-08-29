@@ -19,6 +19,7 @@ main {
 }
 
 .time-cell {
+    align-self: center;
     width: 8vh;
     padding-right: 1vh;
     flex-shrink: 0;
@@ -158,6 +159,7 @@ main {
     margin-top: 0.3vh;
     font-size: 2.1vh;
     font-weight: 200;
+    white-space: nowrap;
 }
 
 
@@ -186,5 +188,4 @@ main {
 .group-leave-to {
     flex-grow: 0;
     border: 0;
-    color: transparent;
 }

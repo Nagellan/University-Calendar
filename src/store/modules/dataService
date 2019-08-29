@@ -201,7 +201,7 @@ const state = {
               room: 314,
               name: "Discrete Math and Logic",
               organizer: "Rustam Gafarov",
-              groups: ["BS1-1"]
+              groups: ["BS1-3"]
             }
           ]
         },

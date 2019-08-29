@@ -4,7 +4,10 @@
 			<div class="row">
 				<div class="time-cell"></div>
 				<template v-for="group in groups">
-					<transition name="group">
+					<transition
+						name="group"
+						:key="group.name"
+					>
 						<div
 							class="cell"
 							:key="group.name"
