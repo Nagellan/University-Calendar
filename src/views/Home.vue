@@ -3,7 +3,7 @@
     <Header />
     <div id="main-container">
       <ToolBar />
-      <Main />
+      <Main id="fullscreen" />
     </div>
   </div>
 </template>
