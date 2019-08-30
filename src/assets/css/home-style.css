@@ -1,40 +1,26 @@
-.home,
-.nav,
-.aside,
-.main {
-    margin: 0;
-}
-
-.home {
-    width: 100vm;
+#home {
+    width: 100vw;
     height: 100vh;
 }
 
-.nav {
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
+header {
+    width: 100vw;
+    height: 8vh;
+
+    border-bottom: 0.3vh solid #92ba1f;
+}
+
+#main-container {
+    height: 91.7vh;
+
     display: flex;
-    width: 100vm;
-    height: 73px;
-    border-bottom: 2px solid #92ba1f;
 }
 
-.main-container {
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    height: calc(100vh - 75px);
+aside {
+    border-right: 0.1vw inset #dadce0;
+    flex: 2;
 }
 
-.aside {
-    flex: 1;
-    border-right: 1px inset #dadce0;
-}
-
-.main {
-    flex: 4;
+main {
+    flex: 9;
 }

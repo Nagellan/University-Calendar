@@ -1,0 +1,244 @@
+aside {
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+aside > * {
+    width: 18vw;
+}
+
+::-webkit-scrollbar {
+    width: 0.8vh;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(1,1,1,0.1);
+    border-radius: 0.1vh;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(1,1,1,0.15);
+}
+
+.item {
+    box-sizing: initial;
+    height: 2vw;
+}
+
+.label {
+    font-size: 1.35vw;
+    font-family: "Elektra", sans-serif;
+    padding: 1.8vw 1.75vw 0;
+}
+
+.label2 {
+    user-select: none;
+    color: #666666;
+    font-size: 1.1vw;
+    font-family: "Elektra", sans-serif;
+}
+
+
+.weekDays-selector {
+    user-select: none;
+    padding: 0 1.75vw 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.weekDays-selector input {
+    display: none !important;
+}
+
+.weekDays-selector input[type="checkbox"] + label {
+    font-size: 1vw;
+    font-family: "Elektra", sans-serif;
+    border: 0.08vw solid #d3d3d3;
+    color: #d3d3d3;
+    display: inline-block;
+    border-radius: 0.2vw;
+    background: white;
+    height: 1.6vw;
+    width: 1.6vw;
+    margin-right: 0.1vw;
+    line-height: 1.6vw;
+    text-align: center;
+    cursor: pointer;
+}
+
+.weekDays-selector input[type="checkbox"]:checked + label {
+    background: #92b825;
+    color: #ffffff;
+    border: 0.08vw solid #92b825;
+    -webkit-animation: tick 0.08s ease-in-out;
+    animation: tick 0.08s ease-in-out;
+}
+
+@-webkit-keyframes tick {
+    0% {
+        -webkit-transform: scale(0.7);
+        transform: scale(0.7);
+    }
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}
+@keyframes tick {
+    0% {
+        -webkit-transform: scale(0.7);
+        transform: scale(0.7);
+    }
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}
+
+
+.list {
+    padding: 0.1vw 1.75vw 1vw;
+}
+
+.dropdown {
+    display:flex;
+    flex-direction: column;
+
+    margin: 0;
+    line-height: 1.5vw;
+    height: 100%;
+    max-height: 1.46vw;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out;
+}
+
+.dropdown.active {
+    max-height: 100vh;
+}
+
+.room-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.room-container div {
+    cursor: pointer;
+    user-select: none;
+    text-align: center;
+    color: #9C9C9C;
+    font-family: "Elektra", sans-serif;
+    font-weight: 100;
+    font-size: 1.1vw;
+    margin-right: 1vw;
+    height:1.5vw;
+    width:2.5vw;
+    transition: background 0.1s ease;
+}
+.room-container div:hover {
+    background: #EEEDF2;
+    color: #6c6c6c;
+    border-radius: 0.5vw;
+}
+
+.activeRoom {
+    background: #EEEDF2;
+    color: #6c6c6c;
+    border-radius: 0.5vw;
+}
+
+.label-container {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+}
+
+.triangle {
+    color: #6c6c6c;
+    border-right: 0.1vw solid;
+    border-bottom: 0.1vw solid;
+    height: 0.6vw;
+    width: 0.6vw;
+    margin: 0.5vw 0.7vw 0;
+    transform: rotate(-315deg);
+    transition: transform 0.2s ease;
+}
+.triangle.active {
+    transform: rotate(-136deg);
+}
+
+
+@keyframes click-wave {
+    0% {
+        height: 1.6vw;
+        width: 1.6vw;
+        opacity: 0.35;
+    }
+    100% {
+        height: 1.6vw;
+        width: 1.6vw;
+        opacity: 0;
+    }
+}
+
+.option-input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    position: relative;
+    height: 1.6vw;
+    width: 1.6vw;
+    border-radius: 0.1vw;
+    transition: background 0.2s ease-out 0s;
+    background: #cbd1d8;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    margin: 0.1vw 0.7vw 0.4vw 0;
+    outline: none;
+}
+
+.group-label {
+    margin: 0.2vw 0 0;
+    font-size: 1.1vw;
+}
+
+.option-input:hover {
+    background: #9faab7;
+}
+
+.option-input:checked {
+    background: #2172CD;
+}
+
+.option-input:checked::before {
+    position: absolute;
+    display: inline-block;
+    height: 1.6vw;
+    width: 1.6vw;
+    content: '✔';
+    text-align: center;
+    font-size: 1.3vw;
+    line-height: 1.6vw;
+}
+
+.option-input:checked::after {
+    -webkit-animation: click-wave 0.65s;
+    -moz-animation: click-wave 0.65s;
+    animation: click-wave 0.65s;
+    background: #2172CD;
+    content: '';
+}
+
+.toolbar-enter-active,
+.toolbar-leave-active {
+    transition: flex 0.3s ease;
+}
+
+.toolbar-enter,
+.toolbar-leave-to {
+    flex: 0;
+}

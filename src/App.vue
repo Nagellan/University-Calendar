@@ -1,5 +1,5 @@
 <template>
-  <div class="app">
+  <div id="app">
     <Home />
   </div>
 </template>
@@ -15,9 +15,14 @@ export default {
 </script>
 
 <style lang="scss">
-body,
-.app {
-  padding: 0;
+@import "./assets/css/font.css";
+
+* {
   margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  box-sizing: border-box;
+  font-family: 'Elektra';
 }
 </style>

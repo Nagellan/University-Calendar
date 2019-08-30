@@ -1,0 +1,104 @@
+header {
+	line-height: 0;
+	display: flex;
+	flex-direction: row;
+	align-items: stretch;
+	z-index: 12;
+}
+
+button,
+.schedule-type {
+	transition: background-color 0.3s;
+	cursor: pointer;
+}
+
+button {
+	line-height: 0;
+	height: 5vh;
+	width: 5vh;
+	background-color: unset;
+	border-radius: 50%;
+}
+
+button:hover {
+	background-color: rgba(1,1,1,0.15);
+}
+
+button img {
+	height: 50%;
+	width: 50%;
+}
+
+.left-nav-bar,
+.right-nav-bar {
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.left-nav-bar {
+	flex: 2;
+}
+
+.left-nav-bar .menu-button{
+	margin-left: 1.2vw;
+}
+
+.left-nav-bar .logo{
+	width: 60%;
+	margin-right: 1.2vw;
+}
+
+.right-nav-bar {
+	flex: 9;
+}
+
+.right-nav-bar .schedule-type {
+	position: relative;
+	width: 45vh;
+
+	font-size: 4vh;
+	font-weight: 600;
+	line-height: 7.8vh;
+
+	padding: 0 3vh;
+	align-self: stretch;
+}
+
+.right-nav-bar > .schedule-type:hover {
+	background-color: rgba(1,1,1,0.1);
+}
+
+.right-nav-bar .schedule-type .sch-drop-down {
+	background-color: white;
+	position: absolute;
+	z-index: 11;
+	width: 100%;
+	top: -20vh;
+	left: 0;
+	box-shadow: 0px 5px 28px -3px rgba(0,0,0,0.2);
+	transition: top 0.3s ease;
+}
+
+.right-nav-bar .schedule-type .sch-drop-down > * {
+	transition: background-color 0.3s;
+	padding: 0 3vh;
+}
+
+.right-nav-bar .schedule-type .sch-drop-down > *:hover {
+	background-color: rgba(1,1,1,0.1);
+}
+
+.right-nav-bar .schedule-type .sch-drop-down.active {
+	top: 8vh;
+}
+
+.right-nav-bar .buttons {
+	display: flex;
+	flex-wrap: nowrap;
+}
+
+.right-nav-bar .buttons button {
+	margin-right: 1.2vw;
+}
