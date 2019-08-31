@@ -3,9 +3,9 @@
     <Header />
     <div id="main-container">
       <ToolBar />
-      <AcademicMain v-if="scheduleStatus == 0" id="fullscreen" />
-      <RoomMain v-if="scheduleStatus == 1"/>
-      <PersonalMain v-if="scheduleStatus == 2"/>
+      <AcademicMain v-if="scheduleStatus == 0" class="fullscreen" />
+      <RoomMain v-if="scheduleStatus == 1" class="fullscreen" />
+      <PersonalMain v-if="scheduleStatus == 2" class="fullscreen" />
     </div>
   </div>
 </template>
