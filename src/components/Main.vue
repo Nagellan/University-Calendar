@@ -1,11 +1,11 @@
 <template>
 	<main>
-		<div id="groups-title">
+		<div class="cells-title">
 			<div class="row">
 				<div class="time-cell"></div>
 				<template v-for="group in groups">
 					<transition
-						name="group"
+						name="cell"
 						:key="group.name"
 					>
 						<div

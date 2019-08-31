@@ -30,14 +30,14 @@ main {
     color: rgba(1, 1, 1, 0.25);
 }
 
-#groups-title {
+.cells-title {
     position: sticky;
     top: 0;
 
     z-index: 10;
 }
 
-#groups-title .cell {
+.cells-title .cell {
     font-size: 3vh;
     font-weight: 600;
     letter-spacing: -0.1vh;
@@ -179,13 +179,13 @@ main {
 
 /* Groups checking animations */
 
-.group-enter-active,
-.group-leave-active {
+.cell-enter-active,
+.cell-leave-active {
   transition: all .25s ease-out;
 }
 
-.group-enter, 
-.group-leave-to {
+.cell-enter, 
+.cell-leave-to {
     flex-grow: 0;
     border: 0;
 }

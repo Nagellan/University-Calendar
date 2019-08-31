@@ -19,7 +19,7 @@
 					<div class="cells-wrapper">
 						<template v-for="group in groups">
 							<transition
-								name="group"
+								name="cell"
 								:key="timeSlot.startTime + '-' + group.name"
 							>
 								<div
