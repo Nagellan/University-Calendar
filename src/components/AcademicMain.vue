@@ -1,5 +1,5 @@
 <template>
-	<main>
+	<main id="academic-main">
 		<div class="cells-title">
 			<div class="row">
 				<div class="time-cell"></div>
@@ -62,5 +62,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/css/main-style.css";
+@import "../assets/css/academic-main-style.css";
 </style>

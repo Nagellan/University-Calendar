@@ -94,6 +94,10 @@ button img {
 	top: 8vh;
 }
 
+.right-nav-bar .room-number {
+	font-weight: 100;
+}
+
 .right-nav-bar .buttons {
 	display: flex;
 	flex-wrap: nowrap;

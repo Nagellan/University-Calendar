@@ -10,6 +10,7 @@
     <div class="right-nav-bar">
       <div class="schedule-type" @click="activate()">
         {{ this.scheduleTypes[scheduleStatus] }}
+        <span class="room-number" v-if="scheduleStatus == 1"> {{ activeRoom }} </span>
 				<div class="sch-drop-down" :class="{'active' : this.dropDownIsActive}">
 					<div v-for="(schType, index) in scheduleTypes" :key="schType" @click="switchSchType(index)">
 						<template v-if="index != scheduleStatus">
@@ -62,7 +63,12 @@ export default {
 		activate() {
 			this.dropDownIsActive = !this.dropDownIsActive;
 		}
-  }
+  },
+  computed: {
+		activeRoom: function() {
+			return this.$store.getters.getActiveRoom;
+		}
+	}
 };
 </script>
 

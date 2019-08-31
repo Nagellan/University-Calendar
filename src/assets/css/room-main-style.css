@@ -1,0 +1,77 @@
+#room-main .row {
+    flex: 1 1 0;
+}
+
+#room-main .time-cell {
+    align-self: flex-start;
+}
+
+#room-main .week-wrapper {
+    height: calc(100% - 8.1vh);
+
+    display: flex;
+    flex-direction: column;
+}
+
+#room-main .cells-wrapper .cell {
+    flex-direction: column;
+    padding: 1vh 0;
+    justify-content: center;
+}
+
+#room-main .cells-wrapper .cell > * {
+    padding: 0 1vh;
+}
+
+#room-main .cell .name-row {
+    font-size: 2.5vh;
+    line-height: 2.6vh;
+    text-align: center;
+    font-weight: 600;
+
+    max-height: 5vh;
+    overflow: hidden;
+
+    justify-content: flex-start;
+}
+
+#room-main .cell .bottom-row .type {
+    font-size: 2vh;
+    font-weight: 100;
+}
+
+#room-main .cell .bottom-row {
+    justify-content: flex-start;
+    flex-direction: column;
+    flex-grow: unset;
+}
+
+#room-main .cell .bottom-row > * {
+    flex: 2 1;
+}
+
+#room-main .cell .bottom-row .type-course {
+    flex-direction: row;
+    display: flex;
+    align-items: flex-end;
+}
+#room-main .cell .bottom-row .type-course > * {
+    flex-grow: 1;
+}
+
+#room-main .cell .bottom-row .type-course .type {
+    text-align: right;
+    padding-right: 1.3vh;
+    font-size: 2vh;
+}
+
+#room-main .cell .bottom-row .type-course .course {
+    font-weight: 600;
+    font-size: 2vh;
+}
+#room-main .cell .bottom-row .organizer {
+    text-align: center;
+    white-space: nowrap;
+    align-items: flex-start;
+    font-size: 2.1vh;
+}

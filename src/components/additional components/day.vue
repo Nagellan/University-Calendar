@@ -71,5 +71,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../../assets/css/main-style.css";
+@import "../../assets/css/academic-main-style.css";
 </style>
