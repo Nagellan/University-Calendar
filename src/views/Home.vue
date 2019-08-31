@@ -3,7 +3,7 @@
     <Header />
     <div id="main-container">
       <ToolBar />
-      <AcademicMain v-if="scheduleStatus == 0"/>
+      <AcademicMain v-if="scheduleStatus == 0" id="fullscreen" />
       <RoomMain v-if="scheduleStatus == 1"/>
       <PersonalMain v-if="scheduleStatus == 2"/>
     </div>
