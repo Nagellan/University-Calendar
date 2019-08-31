@@ -10,6 +10,7 @@
     <div class="right-nav-bar">
       <div class="schedule-type" @click="activate()">
         {{ this.scheduleTypes[scheduleStatus] }}
+        <span class="room-number" v-if="scheduleStatus == 1"> {{ activeRoom }} </span>
         <div class="sch-drop-down" :class="{ active: this.dropDownIsActive }">
           <div
             v-for="(schType, index) in scheduleTypes"
@@ -74,11 +75,16 @@ export default {
     },
     changeStatusToolBar() {
       this.$store.dispatch("setToolBarStatus", !this.statusToolBar);
-    },
-    activate() {
-      this.dropDownIsActive = !this.dropDownIsActive;
-    }
-  }
+		},
+		activate() {
+			this.dropDownIsActive = !this.dropDownIsActive;
+		}
+  },
+  computed: {
+		activeRoom: function() {
+			return this.$store.getters.getActiveRoom;
+		}
+	}
 };
 </script>
 
