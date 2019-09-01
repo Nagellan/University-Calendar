@@ -34,8 +34,7 @@ const state = {
   scheduleStatus: 1,
   scheduleTypes: [
     "Academic Schedule",
-    "Room Schedule",
-    "Personal Calendar"
+    "Room Schedule"
   ],
   courses: [
     {

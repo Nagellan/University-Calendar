@@ -5,7 +5,6 @@
       <ToolBar />
       <AcademicMain v-if="scheduleStatus == 0" class="fullscreen" />
       <RoomMain v-if="scheduleStatus == 1" class="fullscreen" />
-      <PersonalMain v-if="scheduleStatus == 2" class="fullscreen" />
     </div>
   </div>
 </template>
@@ -15,7 +14,6 @@ import Header from "../components/Header";
 import ToolBar from "../components/ToolBar";
 import AcademicMain from "../components/AcademicMain";
 import RoomMain from "../components/RoomMain";
-import PersonalMain from "../components/PersonalMain";
 
 export default {
   name: "home",
@@ -24,7 +22,6 @@ export default {
     ToolBar,
     AcademicMain,
     RoomMain,
-    PersonalMain
   },
   computed: {
     scheduleStatus: function() {
