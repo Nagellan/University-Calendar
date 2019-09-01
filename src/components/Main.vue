@@ -34,6 +34,9 @@ import Vue from "vue";
 import day from "./additional components/day";
 
 export default {
+	beforeCreate() {
+		this.$store.dispatch("setInitialValue");
+	},
 	computed: {
 		groups: function() {
 			return this.courses
