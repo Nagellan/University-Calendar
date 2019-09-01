@@ -65,7 +65,7 @@ export default {
   data() {
     return {
       floors: this.$store.getters.getFloors,
-      roomActive: this.$store.getters.getActiveRoom,
+      roomActive: this.$store.getters.getActiveRoom
     };
   },
   methods: {

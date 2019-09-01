@@ -421,7 +421,7 @@ const mutations = {
       for (let j = 0; j < payload[i].groups.length; j++)
         groups.push({
           name: payload[i].groups[j],
-          isActive: (i === 0)
+          isActive: i === 0
         });
 
       courses.push({
