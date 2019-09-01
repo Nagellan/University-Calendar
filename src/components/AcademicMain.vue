@@ -1,11 +1,13 @@
 <template>
-	<main>
-		<div id="groups-title">
+	<main id="academic-main">
+		<div class="cells-title">
 			<div class="row">
 				<div class="time-cell"></div>
+
+				<div class="title-cells-wrapper">
 				<template v-for="group in groups">
 					<transition
-						name="group"
+						name="cell"
 						:key="group.name"
 					>
 						<div
@@ -17,6 +19,7 @@
 						</div>
 					</transition>
 				</template>
+				</div>
 			</div>
 		</div>
 
@@ -64,5 +67,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/css/main-style.css";
+@import "../assets/css/academic-main-style.css";
 </style>

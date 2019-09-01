@@ -10,6 +10,7 @@
     <div class="right-nav-bar">
       <div class="schedule-type" @click="activate()">
         {{ this.scheduleTypes[scheduleStatus] }}
+        <span class="room-number" v-if="scheduleStatus == 1"> {{ activeRoom }} </span>
         <div class="sch-drop-down" :class="{ active: this.dropDownIsActive }">
           <div
             v-for="(schType, index) in scheduleTypes"
@@ -57,15 +58,18 @@ export default {
   },
   methods: {
     openFullscreen() {
-      var elem = document.getElementById("fullscreen");
-      if (elem.requestFullscreen) {
-        elem.requestFullscreen();
-      } else if (elem.mozRequestFullScreen) {
-        elem.mozRequestFullScreen();
-      } else if (elem.webkitRequestFullscreen) {
-        elem.webkitRequestFullscreen();
-      } else if (elem.msRequestFullscreen) {
-        elem.msRequestFullscreen();
+      var elems = document.getElementsByClassName("fullscreen");
+
+      for (let el of elems) {
+        if (el.requestFullscreen) {
+          el.requestFullscreen();
+        } else if (el.mozRequestFullScreen) {
+          el.mozRequestFullScreen();
+        } else if (el.webkitRequestFullscreen) {
+          el.webkitRequestFullscreen();
+        } else if (el.msRequestFullscreen) {
+          el.msRequestFullscreen();
+        }
       }
     },
     switchSchType(schStatus) {
@@ -74,11 +78,16 @@ export default {
     },
     changeStatusToolBar() {
       this.$store.dispatch("setToolBarStatus", !this.statusToolBar);
-    },
-    activate() {
-      this.dropDownIsActive = !this.dropDownIsActive;
-    }
-  }
+		},
+		activate() {
+			this.dropDownIsActive = !this.dropDownIsActive;
+		}
+  },
+  computed: {
+		activeRoom: function() {
+			return this.$store.getters.getActiveRoom;
+		}
+	}
 };
 </script>
 

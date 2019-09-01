@@ -19,7 +19,7 @@ const state = {
     },
     {
       name: "Wednesday",
-      isActive: false
+      isActive: true
     },
     {
       name: "Thursday",
@@ -40,8 +40,12 @@ const state = {
   ],
   statusToolBar: true,
   roomActive: 108,
-  scheduleStatus: 0,
-  scheduleTypes: ["Academic Schedule", "Room Schedule", "Personal Calendar"],
+  scheduleStatus: 1,
+  scheduleTypes: [
+    "Academic Schedule",
+    "Room Schedule",
+    "Personal Calendar"
+  ],
   courses: [
     {
       name: "BS1",
@@ -307,6 +311,111 @@ const state = {
         }
       ]
     }
+  ],
+  roomSchedule: [
+    {
+      room: 108,
+      timeSlots: [
+        {
+          startTime: "9:00",
+          endTime: "10:30",
+          events: [
+            {
+              type: "Lecture",
+              day: "Monday",
+              name: "Discrete Math and Logic",
+              organizer: "Nikolay Shilov",
+              course: "BS1"
+            },
+            {
+              type: "Lecture",
+              day: "Tuesday",
+              name: "Introduction to Artificial Intelligence",
+              organizer: "Joseph Brown",
+              course: "BS2"
+            }
+          ]
+        },
+        {
+          startTime: "10:35",
+          endTime: "12:05",
+          events: [
+            {
+              type: "Tutorial",
+              day: "Monday",
+              name: "Discrete Math and Logic",
+              organizer: "Rustam Gafarov",
+              course: "BS1"
+            }
+          ]
+        },
+        {
+          startTime: "12:10",
+          endTime: "13:40",
+          events: [
+            {
+              type: "Tutorial",
+              day: "Monday",
+              name: "Discrete Math and Logic",
+              organizer: "Rustam Gafarov",
+              course: "BS1"
+            }
+          ]
+        },
+        {
+          startTime: "14:10",
+          endTime: "15:40",
+          events: [
+            {
+              type: "Tutorial",
+              day: "Monday",
+              name: "Discrete Math and Logic",
+              organizer: "Rustam Gafarov",
+              course: "BS1"
+            }
+          ]
+        },
+        {
+          startTime: "15:45",
+          endTime: "17:15",
+          events: [
+            {
+              type: "Tutorial",
+              day: "Monday",
+              name: "Discrete Math and Logic",
+              organizer: "Rustam Gafarov",
+              course: "BS1"
+            }
+          ]
+        },
+        {
+          startTime: "17:20",
+          endTime: "18:50",
+          events: [
+            {
+              type: "Tutorial",
+              day: "Monday",
+              name: "Discrete Math and Logic",
+              organizer: "Rustam Gafarov",
+              course: "BS1"
+            }
+          ]
+        },
+        {
+          startTime: "18:55",
+          endTime: "20:25",
+          events: [
+            {
+              type: "Lab",
+              day: "Wednesday",
+              name: "Theoretical Computer Science",
+              organizer: "Manuel Mazzaea",
+              course: "BS2"
+            }
+          ]
+        }
+      ]
+    }
   ]
 };
 
@@ -334,7 +443,10 @@ const getters = {
   },
   getToolBarStatus: state => {
     return state.statusToolBar;
-  }
+  },
+  getRoomSchedule: state => {
+    return state.roomSchedule;
+  },
 };
 
 const mutations = {

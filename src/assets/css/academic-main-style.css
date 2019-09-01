@@ -15,7 +15,10 @@ main {
     flex-grow: 1;
     width: 0;
     overflow: hidden;
-    transition: flex-grow 0.2s ease;
+}
+
+.cell:not(:last-child) {
+    border-right: 0.1vw solid rgba(1,1,1,0.1);
 }
 
 .time-cell {
@@ -30,24 +33,28 @@ main {
     color: rgba(1, 1, 1, 0.25);
 }
 
-#groups-title {
+.cells-title {
     position: sticky;
     top: 0;
 
     z-index: 10;
 }
 
-#groups-title .cell {
+.cells-title .title-cells-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    outline: 0.1vw solid rgba(1,1,1,0.1);
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.cells-title .cell {
     font-size: 3vh;
     font-weight: 600;
     letter-spacing: -0.1vh;
     text-align: center;
     line-height: 8vh;
-
-    border: 0.1vh solid rgba(1,1,1,0.1);
-    border-top: 0;
-
-    background-color: rgba(255, 255, 255, 0.9);
+    justify-content: center;
 }
 
 .day {
@@ -90,30 +97,26 @@ main {
     flex-direction: column;
 }
 
-.day-schedule .cells-wrapper {
+.cells-wrapper {
     display: flex;
     flex-grow: 1;
     background-color: rgba(255, 255, 255, 0.5);
 }
 
-.day-schedule .row:last-child .cells-wrapper {
+.row:last-child .cells-wrapper {
     border-bottom-left-radius: 1.2vh;
 }
 
-.day-schedule .cells-wrapper .cell:not(:last-child) {
-    border-right: 0.1vw solid rgba(1,1,1,0.1);
-}
-
-.day-schedule .row:not(:last-child) .cells-wrapper{
+.row:not(:last-child) .cells-wrapper{
     border-bottom: 0.1vw solid rgba(1,1,1,0.1);
 }
 
-.day-schedule .cell {
+.cell {
     display: flex;
     flex-direction: row;
 }
 
-.day-schedule .cell > * {
+.cell > * {
     display: flex;
     flex-grow: 1;
     flex-direction: column;
@@ -179,13 +182,14 @@ main {
 
 /* Groups checking animations */
 
-.group-enter-active,
-.group-leave-active {
+.cell-enter-active,
+.cell-leave-active {
   transition: all .25s ease-out;
 }
 
-.group-enter, 
-.group-leave-to {
+.cell-enter, 
+.cell-leave-to {
     flex-grow: 0;
     border: 0;
+    white-space: nowrap;
 }

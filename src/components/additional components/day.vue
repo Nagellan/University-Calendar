@@ -19,7 +19,7 @@
 					<div class="cells-wrapper">
 						<template v-for="group in groups">
 							<transition
-								name="group"
+								name="cell"
 								:key="timeSlot.startTime + '-' + group.name"
 							>
 								<div
@@ -66,5 +66,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../../assets/css/main-style.css";
+@import "../../assets/css/academic-main-style.css";
 </style>
