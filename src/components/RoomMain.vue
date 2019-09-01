@@ -2,7 +2,8 @@
 	<main id="room-main">
 		<div class="cells-title row">
 			<div class="time-cell"></div>
-			<template v-for="day in daysStatuses">
+			<div class="title-cells-wrapper">
+				<template v-for="day in daysStatuses">
 				<transition
 					name="cell"
 					:key="day.name"
@@ -16,6 +17,7 @@
 					</div>
 				</transition>
 			</template>
+			</div>
 		</div>
 
 		<div class="week-wrapper">

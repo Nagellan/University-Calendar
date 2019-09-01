@@ -3,6 +3,8 @@
 		<div class="cells-title">
 			<div class="row">
 				<div class="time-cell"></div>
+
+				<div class="title-cells-wrapper">
 				<template v-for="group in groups">
 					<transition
 						name="cell"
@@ -17,6 +19,7 @@
 						</div>
 					</transition>
 				</template>
+				</div>
 			</div>
 		</div>
 
