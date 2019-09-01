@@ -353,8 +353,7 @@ const mutations = {
   setScheduleStatus: (state, payload) => {
     state.scheduleStatus = payload;
   },
-  setInitialValue: (state, payload) => {
-    console.log(payload);
+  setInitialSchedule: (state, payload) => {
     let weekday = [
       "Monday",
       "Tuesday",
@@ -364,7 +363,7 @@ const mutations = {
       "Saturday",
       "Sunday"
     ];
-    var keyArray = [
+    let keyArray = [
       ["09:00", 0],
       ["10:35", 1],
       ["12:10", 2],
@@ -380,7 +379,7 @@ const mutations = {
       ["18:50", 5],
       ["20:25", 6]
     ];
-    var myMap = new Map(keyArray);
+    let myMap = new Map(keyArray);
     let schedule = [];
     let arrayTime = [];
 
@@ -413,7 +412,26 @@ const mutations = {
       });
     }
     state.schedule = schedule;
-    console.log(schedule);
+  },
+  setInitialCourses(state, payload) {
+    let courses = [];
+
+    for (let i = 0; i < payload.length; i++) {
+      let groups = [];
+      for (let j = 0; j < payload[i].groups.length; j++)
+        groups.push({
+          name: payload[i].groups[j],
+          isActive: (i === 0)
+        });
+
+      courses.push({
+        name: payload[i].name,
+        isActive: true,
+        groups: groups
+      });
+    }
+
+    state.courses = courses;
   }
 };
 
@@ -438,7 +456,12 @@ const actions = {
     await AXIOS.get("api/schedule/").then(response => {
       data = response.data;
     });
-    context.commit("setInitialValue", data);
+    context.commit("setInitialSchedule", data);
+
+    await AXIOS.get("api/course/").then(response => {
+      data = response.data;
+    });
+    context.commit("setInitialCourses", data);
   }
 };
 

@@ -39,7 +39,7 @@ export default {
 	},
 	computed: {
 		groups: function() {
-			return this.courses
+			return this.$store.getters.getCourses
 				.map(course =>
 					course.groups
 						.map(group => {
@@ -55,7 +55,6 @@ export default {
 	data() {
 		return {
 			daysStatuses: this.$store.getters.getDaysStatuses,
-			courses: this.$store.getters.getCourses,
 		};
 	},
 	components: {

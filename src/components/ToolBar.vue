@@ -31,7 +31,7 @@
     <div
       v-if="scheduleStatus === 0"
       class="list"
-      v-for="(item, index) in courses"
+      v-for="(item, index) in courseStatus"
     >
       <div class="dropdown" v-bind:class="{ active: item.isActive }">
         <div class="label-container" v-on:click="changeActiveCourses(index)">
@@ -64,26 +64,27 @@ import Days from "./additional components/Days";
 export default {
   data() {
     return {
-      courses: this.$store.getters.getCourses,
       floors: this.$store.getters.getFloors,
       roomActive: this.$store.getters.getActiveRoom,
     };
   },
   methods: {
     changeActiveCourses(index) {
-      this.courses.splice(index, 1, {
-        name: this.courses[index].name,
-        isActive: !this.courses[index].isActive,
-        groups: this.courses[index].groups
+      let course = this.$store.getters.getCourses;
+      course.splice(index, 1, {
+        name: course[index].name,
+        isActive: !course[index].isActive,
+        groups: course[index].groups
       });
-      this.$store.dispatch("setCourses", this.courses);
+      this.$store.dispatch("setCourses", course);
     },
     changeActiveGroups(index, groupIndex) {
-      this.courses[index].groups.splice(groupIndex, 1, {
-        name: this.courses[index].groups[groupIndex].name,
-        isActive: !this.courses[index].groups[groupIndex].isActive
+      let course = this.$store.getters.getCourses;
+      course[index].groups.splice(groupIndex, 1, {
+        name: course[index].groups[groupIndex].name,
+        isActive: !course[index].groups[groupIndex].isActive
       });
-      this.$store.dispatch("setCourses", this.courses);
+      this.$store.dispatch("setCourses", course);
     },
     changeActiveRoom(num) {
       this.roomActive = num;
@@ -103,6 +104,9 @@ export default {
     },
     scheduleStatus: function() {
       return this.$store.getters.getScheduleStatus;
+    },
+    courseStatus: function() {
+      return this.$store.getters.getCourses;
     }
   },
   components: {
