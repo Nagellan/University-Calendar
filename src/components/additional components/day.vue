@@ -56,16 +56,11 @@ export default {
 	},
 	computed: {
 		todaySchedule: function() {
-			return this.schedule
+			return this.$store.getters.getSchedule
 				.filter(day => day.name == this.day.name)
 				.map(day => day.timeSlots)[0] || [];
 		}
 	},
-  data() {
-		return {
-			schedule: this.$store.getters.getSchedule
-		};
-  },
   props: ['day', 'groups']
 };
 </script>
