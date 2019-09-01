@@ -7,6 +7,33 @@ const AXIOS = axios.create({
   }
 });
 
+const weekday = [
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+  "Sunday"
+];
+
+const keyArray = [
+  ["09:00", 0],
+  ["10:35", 1],
+  ["12:10", 2],
+  ["14:10", 3],
+  ["15:45", 4],
+  ["17:20", 5],
+  ["18:55", 6],
+  ["10:30", 0],
+  ["12:05", 1],
+  ["13:40", 2],
+  ["15:40", 3],
+  ["17:15", 4],
+  ["18:50", 5],
+  ["20:25", 6]
+];
+
 const state = {
   daysStatuses: [
     {
@@ -41,10 +68,7 @@ const state = {
   statusToolBar: true,
   roomActive: 108,
   scheduleStatus: 1,
-  scheduleTypes: [
-    "Academic Schedule",
-    "Room Schedule"
-  ],
+  scheduleTypes: ["Academic Schedule", "Room Schedule"],
   courses: [
     {
       name: "BS1",
@@ -445,7 +469,7 @@ const getters = {
   },
   getRoomSchedule: state => {
     return state.roomSchedule;
-  },
+  }
 };
 
 const mutations = {
@@ -464,32 +488,60 @@ const mutations = {
   setScheduleStatus: (state, payload) => {
     state.scheduleStatus = payload;
   },
+  setInitialRoomSchedule: (state, payload) => {
+    let roomSchedule = [];
+    let events = [];
+    let timeMap = new Map(keyArray);
+    let myMap = new Map();
+    let cnt = -1;
+    for (let i = 0; i < payload.length; i++)
+      if (!myMap.has(payload[i].room)) {
+        cnt++;
+
+        let strDate = payload[i].startTime.split(" ")[0].split(".");
+        let date = new Date(strDate[2], strDate[1] - 1, strDate[0]);
+
+        myMap.set(payload[i].room, cnt);
+        events.push([[payload[i].room], [], [], [], [], [], [], []]);
+        events[cnt][timeMap.get(payload[i].startTime.split(" ")[1]) + 1].push({
+          type: payload[i].type,
+          day: weekday[date.getDay() - 1],
+          name: payload[i].name,
+          organizer: payload[i].organizer,
+          course: payload[i].course
+        });
+      } else {
+        let strDate = payload[i].startTime.split(" ")[0].split(".");
+        let date = new Date(strDate[2], strDate[1] - 1, strDate[0]);
+        events[myMap.get(payload[i].room)][
+          timeMap.get(payload[i].startTime.split(" ")[1]) + 1
+        ].push({
+          type: payload[i].type,
+          day: weekday[date.getDay() - 1],
+          name: payload[i].name,
+          organizer: payload[i].organizer,
+          course: payload[i].course
+        });
+      }
+
+    for (let i = 0; i <= cnt; i++) {
+      let timeSlots = [];
+      for (let j = 1; j <= 7; j++)
+        //if (events[i][j].length !== 0)
+        timeSlots.push({
+          startTime: keyArray[j - 1][0],
+          endTime: keyArray[j + 6][0],
+          events: events[i][j]
+        });
+      roomSchedule.push({
+        room: events[i][0][0],
+        timeSlots: timeSlots
+      });
+    }
+
+    state.roomSchedule = roomSchedule;
+  },
   setInitialSchedule: (state, payload) => {
-    let weekday = [
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
-      "Sunday"
-    ];
-    let keyArray = [
-      ["09:00", 0],
-      ["10:35", 1],
-      ["12:10", 2],
-      ["14:10", 3],
-      ["15:45", 4],
-      ["17:20", 5],
-      ["18:55", 6],
-      ["10:30", 0],
-      ["12:05", 1],
-      ["13:40", 2],
-      ["15:40", 3],
-      ["17:15", 4],
-      ["18:50", 5],
-      ["20:25", 6]
-    ];
     let myMap = new Map(keyArray);
     let schedule = [];
     let arrayTime = [];
@@ -563,16 +615,15 @@ const actions = {
     context.commit("setScheduleStatus", payload);
   },
   setInitialValue: async context => {
-    let data = 0;
     await AXIOS.get("api/schedule/").then(response => {
-      data = response.data;
+      context.commit("setInitialSchedule", response.data);
+      context.commit("setInitialRoomSchedule", response.data);
     });
-    context.commit("setInitialSchedule", data);
 
     await AXIOS.get("api/course/").then(response => {
-      data = response.data;
+      context.commit("setInitialCourses", response.data);
     });
-    context.commit("setInitialCourses", data);
+
   }
 };
 

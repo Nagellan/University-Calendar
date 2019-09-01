@@ -69,7 +69,6 @@ export default {
 	data() {
 		return {
 			daysStatuses: this.$store.getters.getDaysStatuses,
-			roomSchedule: this.$store.getters.getRoomSchedule
 		}
 	},
 	methods: {
@@ -81,7 +80,7 @@ export default {
 	computed: {
 		activeRoomSchedule: function() {
 			let activeRoom = this.$store.getters.getActiveRoom;
-			return this.roomSchedule
+			return this.$store.getters.getRoomSchedule
 				.filter(slot => slot.room == activeRoom)
 				.map(slot => slot.timeSlots)[0] ||
 				[];

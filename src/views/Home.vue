@@ -23,6 +23,9 @@ export default {
     AcademicMain,
     RoomMain,
   },
+  beforeCreate() {
+    this.$store.dispatch("setInitialValue");
+  },
   computed: {
     scheduleStatus: function() {
       return this.$store.getters.getScheduleStatus;
