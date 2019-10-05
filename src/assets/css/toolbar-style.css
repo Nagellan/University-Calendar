@@ -5,7 +5,7 @@ aside {
 }
 
 aside > * {
-    width: 18vw;
+    width: 35vh;
 }
 
 ::-webkit-scrollbar {
@@ -23,26 +23,30 @@ aside > * {
 
 .item {
     box-sizing: initial;
-    height: 2vw;
 }
 
 .label {
-    font-size: 1.35vw;
+    color: rgba(1,1,1,0.7);
+    font-weight: 600;
+    font-size: 2.5vh;
     font-family: "Elektra", sans-serif;
-    padding: 1.8vw 1.75vw 0;
+    padding: 2.2vh 2.2vh 0;
+    margin-bottom: 1vh;
 }
 
 .label2 {
     user-select: none;
-    color: #666666;
-    font-size: 1.1vw;
+    margin-bottom: 0.8vh;
+    color: rgba(1,1,1,0.55);
+    font-size: 2vh;
+    font-weight: 600;
     font-family: "Elektra", sans-serif;
 }
 
 
 .weekDays-selector {
     user-select: none;
-    padding: 0 1.75vw 0;
+    padding: 0 2.2vh 0;
     display: flex;
     justify-content: space-between;
 }
@@ -52,17 +56,17 @@ aside > * {
 }
 
 .weekDays-selector input[type="checkbox"] + label {
-    font-size: 1vw;
+    font-size: 2vh;
     font-family: "Elektra", sans-serif;
-    border: 0.08vw solid #d3d3d3;
+    font-weight: 100;
+    border: 0.08vh solid #d3d3d3;
     color: #d3d3d3;
     display: inline-block;
-    border-radius: 0.2vw;
-    background: white;
-    height: 1.6vw;
-    width: 1.6vw;
-    margin-right: 0.1vw;
-    line-height: 1.6vw;
+    border-radius: 0.3vh;
+    background-color: rgba(255,255,255,0.7);
+    height: 3vh;
+    width: 3vh;
+    line-height: 3vh;
     text-align: center;
     cursor: pointer;
 }
@@ -70,7 +74,7 @@ aside > * {
 .weekDays-selector input[type="checkbox"]:checked + label {
     background: #92b825;
     color: #ffffff;
-    border: 0.08vw solid #92b825;
+    border: 0.08vh solid #92b825;
     -webkit-animation: tick 0.08s ease-in-out;
     animation: tick 0.08s ease-in-out;
 }
@@ -98,7 +102,7 @@ aside > * {
 
 
 .list {
-    padding: 0.1vw 1.75vw 1vw;
+    padding: 0.1vh 2.2vh 1vh;
 }
 
 .dropdown {
@@ -106,9 +110,9 @@ aside > * {
     flex-direction: column;
 
     margin: 0;
-    line-height: 1.5vw;
+    line-height: 2.7vh;
     height: 100%;
-    max-height: 1.46vw;
+    max-height: 2.6vh;
     overflow: hidden;
     transition: max-height 0.4s ease-in-out;
 }
@@ -126,23 +130,23 @@ aside > * {
     cursor: pointer;
     user-select: none;
     text-align: center;
+    line-height: 3vh;
     color: #9C9C9C;
     font-family: "Elektra", sans-serif;
     font-weight: 100;
-    font-size: 1.1vw;
-    margin-right: 1vw;
-    height:1.5vw;
-    width:2.5vw;
+    font-size: 2vh;
+    padding: 0 0.6vh;
     transition: background 0.1s ease;
+    border-radius: 4vh;
+    margin-right: 2vh;
 }
 .room-container div:hover {
-    background: #EEEDF2;
     color: #6c6c6c;
-    border-radius: 0.5vw;
+    background-color: rgba(1,1,1,0.065);
 }
 
 .activeRoom {
-    background: #EEEDF2;
+    background-color: rgba(1,1,1,0.065);
     color: #6c6c6c;
     border-radius: 0.5vw;
 }
@@ -155,11 +159,11 @@ aside > * {
 
 .triangle {
     color: #6c6c6c;
-    border-right: 0.1vw solid;
-    border-bottom: 0.1vw solid;
-    height: 0.6vw;
-    width: 0.6vw;
-    margin: 0.5vw 0.7vw 0;
+    border-right: 0.2vh solid;
+    border-bottom: 0.2vh solid;
+    margin: 0.8vh 1vh 0;
+    height: 1vh;
+    width: 1vh;
     transform: rotate(-315deg);
     transition: transform 0.2s ease;
 }
@@ -170,13 +174,13 @@ aside > * {
 
 @keyframes click-wave {
     0% {
-        height: 1.6vw;
-        width: 1.6vw;
+        height: 3vh;
+        width: 3vh;
         opacity: 0.35;
     }
     100% {
-        height: 1.6vw;
-        width: 1.6vw;
+        height: 3vh;
+        width: 3vh;
         opacity: 0;
     }
 }
@@ -188,26 +192,27 @@ aside > * {
     -o-appearance: none;
     appearance: none;
     position: relative;
-    height: 1.6vw;
-    width: 1.6vw;
-    border-radius: 0.1vw;
+    height: 3vh;
+    width: 3vh;
+    border-radius: 0.1vh;
     transition: background 0.2s ease-out 0s;
-    background: #cbd1d8;
+    background: rgba(1,1,1,0.2);
     border: none;
     color: #fff;
     cursor: pointer;
     display: inline-block;
-    margin: 0.1vw 0.7vw 0.4vw 0;
+    margin: 0.1vh 1vh 0.7vh 0;
     outline: none;
+    border-radius: 0.3vh;
 }
 
 .group-label {
-    margin: 0.2vw 0 0;
-    font-size: 1.1vw;
+    margin: 0.1vh 0 0;
+    font-size: 2vh;
 }
 
 .option-input:hover {
-    background: #9faab7;
+    background: rgba(1,1,1,0.3);
 }
 
 .option-input:checked {
@@ -217,12 +222,12 @@ aside > * {
 .option-input:checked::before {
     position: absolute;
     display: inline-block;
-    height: 1.6vw;
-    width: 1.6vw;
+    height: 3vh;
+    width: 3vh;
     content: '✔';
     text-align: center;
-    font-size: 1.3vw;
-    line-height: 1.6vw;
+    font-size: 2vh;
+    line-height: 3vh;
 }
 
 .option-input:checked::after {
@@ -235,10 +240,10 @@ aside > * {
 
 .toolbar-enter-active,
 .toolbar-leave-active {
-    transition: flex 0.3s ease;
+    transition: width 0.3s ease;
 }
 
 .toolbar-enter,
 .toolbar-leave-to {
-    flex: 0;
+    width: 0;
 }
