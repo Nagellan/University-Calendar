@@ -16,6 +16,7 @@ button {
 	line-height: 0;
 	height: 5vh;
 	width: 5vh;
+	min-width: 5vh;
 	background-color: unset;
 	border-radius: 50%;
 }
@@ -38,16 +39,17 @@ button img {
 }
 
 .left-nav-bar {
-	flex: 2;
+	width: 35vh;
+	min-width: 35vh;
 }
 
 .left-nav-bar .menu-button{
-	margin-left: 1.2vw;
+	margin-left: 2.2vh;
 }
 
 .left-nav-bar .logo{
 	width: 60%;
-	margin-right: 1.2vw;
+	margin-right: 2.2vh;
 }
 
 .right-nav-bar {
