@@ -1,0 +1,23 @@
+@media (max-width: 1200px) {
+  #app {
+    background-color: pink;
+  }
+}
+
+@media (max-width: 992px) {
+  #app {
+    background-color: paleturquoise;
+  }
+}
+
+@media (max-width: 768px) {
+  #app {
+    background-color: palegreen;
+  }
+}
+
+@media (max-width: 576px) {
+  #app {
+    background-color: yellow;
+  }
+}
