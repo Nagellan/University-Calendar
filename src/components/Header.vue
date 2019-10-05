@@ -53,8 +53,18 @@ export default {
       statusToolBar: this.$store.getters.getToolBarStatus,
       scheduleStatus: this.$store.getters.getScheduleStatus,
       scheduleTypes: this.$store.getters.getScheduleTypes,
-      dropDownIsActive: false
+      dropDownIsActive: false,
+      screenSizeStatus: 1
     };
+  },
+  created() {
+    if (+window.innerWidth <= 768) {
+      this.changeStatusToolBar();
+    }
+    window.addEventListener('resize', this.handleResize);
+  },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.handleResize)
   },
   methods: {
     openFullscreen() {
@@ -77,17 +87,23 @@ export default {
       this.scheduleStatus = schStatus;
     },
     changeStatusToolBar() {
+      this.screenSizeStatus = +!this.screenSizeStatus;
+      console.log(this.screenSizeStatus);
       this.$store.dispatch("setToolBarStatus", !this.statusToolBar);
 		},
 		activate() {
 			this.dropDownIsActive = !this.dropDownIsActive;
-		}
+    },
+    handleResize() {
+      if (this.screenSizeStatus == 1 && +window.innerWidth <= 768)
+        this.changeStatusToolBar();
+    }
   },
   computed: {
 		activeRoom: function() {
 			return this.$store.getters.getActiveRoom;
-		}
-	}
+    }
+  }
 };
 </script>
 
