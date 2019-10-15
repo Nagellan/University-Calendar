@@ -10,6 +10,37 @@ aside > * {
     width: 35vh;
 }
 
+aside .logo {
+    display: none;
+    height: 6vh;
+    background-image: url('../../assets/images/IU_logo.png');
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-size: 60%;
+    position: absolute;
+    top: 0;
+}
+
+aside .fullscreen-btn {
+    display: none;
+    height: 6vh;
+    cursor: pointer;
+    justify-content: center;
+    box-shadow: 0 0 2vh 0 rgba(0,0,0,0.3);
+    background-color: white;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+}
+
+aside .fullscreen-btn:hover {
+    background-color: rgba(1,1,1,0.05);
+}
+
+aside .toolbar-scroll {
+    overflow-y: auto;
+}
+
 ::-webkit-scrollbar {
     width: 0.8vh;
 }

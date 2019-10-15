@@ -75,7 +75,7 @@ button img {
 .right-nav-bar .schedule-type .sch-drop-down {
 	background-color: white;
 	position: absolute;
-	z-index: 15;
+	z-index: 16;
 	width: 100%;
 	top: -20vh;
 	left: 0;

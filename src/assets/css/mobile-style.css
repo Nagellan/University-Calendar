@@ -1,24 +1,13 @@
-@media (max-width: 1200px) {
-  #app {
-    background-color: pink;
-  }
-}
-
-@media (max-width: 992px) {
-  #app {
-    background-color: paleturquoise;
-  }
-}
-
 @media (max-width: 768px) {
-  #app {
-    background-color: palegreen;
-  }
-
   aside {
     position: absolute;
     height: inherit;
     box-shadow: 0 0 2vh 0 rgba(0,0,0,0.3);
+    padding-top: 6vh;
+  }
+
+  aside .logo {
+    display: flex;
   }
 
   header .left-nav-bar {
@@ -36,10 +25,6 @@
 }
 
 @media (max-width: 576px) {
-  #app {
-    background-color: yellow;
-  }
-
   header .right-nav-bar .schedule-type {
     padding: 0 1.5vh;
     font-size: 2.5vh;
@@ -52,6 +37,14 @@
 
   header .right-nav-bar .full-screen-button {
     display: none;
+  }
+
+  aside {
+    padding-bottom: 6vh;
+  }
+
+  aside .fullscreen-btn {
+    display: flex;
   }
 
   header .right-nav-bar .buttons {
