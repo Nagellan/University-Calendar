@@ -25,9 +25,9 @@
       </div>
 
       <div class="buttons">
-        <button class="time-button" v-if="scheduleStatus == 1">
+        <!-- <button class="time-button" v-if="scheduleStatus == 1">
           <img class="time-icon" src="..\assets\images\clock_icon.svg" />
-        </button>
+        </button> -->
 
         <button class="full-screen-button" @click="openFullscreen">
           <img
@@ -58,9 +58,8 @@ export default {
     };
   },
   created() {
-    if (+window.innerWidth <= 768) {
+    if (+window.innerWidth <= 768)
       this.changeStatusToolBar();
-    }
     window.addEventListener('resize', this.handleResize);
   },
   beforeDestroy() {
@@ -88,7 +87,6 @@ export default {
     },
     changeStatusToolBar() {
       this.screenSizeStatus = +!this.screenSizeStatus;
-      console.log(this.screenSizeStatus);
       this.$store.dispatch("setToolBarStatus", !this.statusToolBar);
 		},
 		activate() {
