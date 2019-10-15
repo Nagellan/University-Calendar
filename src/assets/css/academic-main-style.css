@@ -4,6 +4,15 @@ main {
     position: relative;
 }
 
+main > * {
+    width: fit-content;
+    min-width: 100%;
+}
+
+#academic-main .row {
+    height: 9.1vh;
+}
+
 .row {
     height: 8vh;
     display: flex;
@@ -15,6 +24,7 @@ main {
     flex-grow: 1;
     width: 0;
     overflow: hidden;
+    min-width: 30vh;
 }
 
 .cell:not(:last-child) {
@@ -134,7 +144,7 @@ main {
 
 .day-schedule .cell .left-col > *,
 .day-schedule .cell .right-col > *{
-    max-height: 50%;
+    max-height: 57%;
     display: flex;
 }
 
@@ -154,8 +164,8 @@ main {
 .day-schedule .cell .name {
     font-size: 2.6vh;
     font-weight: 600;
-    line-height: 2vh;
-    white-space: nowrap;
+    line-height: 2.6vh;
+    overflow: hidden;
 }
 
 .day-schedule .cell .organizer {
@@ -191,5 +201,6 @@ main {
 .cell-leave-to {
     flex-grow: 0;
     border: 0;
+    min-width: 0;
     white-space: nowrap;
 }
