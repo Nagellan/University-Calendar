@@ -14,10 +14,48 @@
   #app {
     background-color: palegreen;
   }
+
+  aside {
+    position: absolute;
+    height: inherit;
+    box-shadow: 0 0 2vh 0 rgba(0,0,0,0.3);
+  }
+
+  header .left-nav-bar {
+    width: 8vh;
+    min-width: 8vh;
+  }
+
+  header .left-nav-bar .logo {
+    display: none;
+  }
+
+  header .left-nav-bar .menu-button {
+    margin-left: 1.5vh;
+  }
 }
 
 @media (max-width: 576px) {
   #app {
     background-color: yellow;
+  }
+
+  header .right-nav-bar .schedule-type {
+    padding: 0 1.5vh;
+    font-size: 2.5vh;
+    width: 27vh;
+  }
+
+  header .right-nav-bar .schedule-type .sch-drop-down > * {
+    padding: 0 1.5vh;
+  }
+
+  header .right-nav-bar .full-screen-button {
+    display: none;
+  }
+
+  header .right-nav-bar .buttons {
+    padding-left: 1vh;
+    width: 7vh;
   }
 }

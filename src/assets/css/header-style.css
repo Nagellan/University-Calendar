@@ -3,7 +3,7 @@ header {
 	display: flex;
 	flex-direction: row;
 	align-items: stretch;
-	z-index: 12;
+	z-index: 18;
 }
 
 button,
@@ -75,7 +75,7 @@ button img {
 .right-nav-bar .schedule-type .sch-drop-down {
 	background-color: white;
 	position: absolute;
-	z-index: 11;
+	z-index: 15;
 	width: 100%;
 	top: -20vh;
 	left: 0;

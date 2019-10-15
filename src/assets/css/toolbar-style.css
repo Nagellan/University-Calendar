@@ -2,6 +2,8 @@ aside {
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
+    background-color: white;
+    z-index: 15;
 }
 
 aside > * {

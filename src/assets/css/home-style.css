@@ -12,7 +12,8 @@ header {
 
 #main-container {
     height: 91.7vh;
-
+    overflow: hidden;
+    position: relative;
     display: flex;
 }
 
