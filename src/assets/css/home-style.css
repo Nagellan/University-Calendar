@@ -12,13 +12,14 @@ header {
 
 #main-container {
     height: 91.7vh;
-
+    overflow: hidden;
+    position: relative;
     display: flex;
 }
 
 aside {
     border-right: 0.1vw inset #dadce0;
-    flex: 2;
+    width: 35vh;
 }
 
 main {

@@ -3,7 +3,7 @@ header {
 	display: flex;
 	flex-direction: row;
 	align-items: stretch;
-	z-index: 12;
+	z-index: 18;
 }
 
 button,
@@ -16,6 +16,7 @@ button {
 	line-height: 0;
 	height: 5vh;
 	width: 5vh;
+	min-width: 5vh;
 	background-color: unset;
 	border-radius: 50%;
 }
@@ -38,16 +39,17 @@ button img {
 }
 
 .left-nav-bar {
-	flex: 2;
+	width: 35vh;
+	min-width: 35vh;
 }
 
 .left-nav-bar .menu-button{
-	margin-left: 1.2vw;
+	margin-left: 2.2vh;
 }
 
 .left-nav-bar .logo{
 	width: 60%;
-	margin-right: 1.2vw;
+	margin-right: 2.2vh;
 }
 
 .right-nav-bar {
@@ -73,7 +75,7 @@ button img {
 .right-nav-bar .schedule-type .sch-drop-down {
 	background-color: white;
 	position: absolute;
-	z-index: 11;
+	z-index: 16;
 	width: 100%;
 	top: -20vh;
 	left: 0;

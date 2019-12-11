@@ -23,12 +23,14 @@
 			</div>
 		</div>
 
-		<day
-			v-for="day in this.daysStatuses"
-			:key="day.name"
-			:day="day"
-			:groups="groups"
-		/>
+		<div class="days-wrapper">
+			<day
+				v-for="day in this.daysStatuses"
+				:key="day.name"
+				:day="day"
+				:groups="groups"
+			/>
+		</div>
 	</main>
 </template>
 
