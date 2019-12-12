@@ -41,17 +41,18 @@ import day from "./additional components/day";
 export default {
 	computed: {
 		groups: function() {
-			return this.$store.getters.getCourses
-				.map(course =>
-					course.groups
-						.map(group => {
-							return {
-								name: course.name + "-" + group.name,
-								isActive: group.isActive
-							};
-						})
-				)
-				.reduce((prev, group) => prev.concat(group));
+			return !this.$store.getters.getCourses[0] ||
+				this.$store.getters.getCourses
+					.map(course =>
+						course.groups
+							.map(group => {
+								return {
+									name: course.name + "-" + group.name,
+									isActive: group.isActive
+								};
+							})
+					)
+					.reduce((prev, group) => prev.concat(group));
 		}
 	},
 	data() {
