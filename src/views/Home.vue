@@ -14,6 +14,7 @@ import Header from "../components/Header";
 import ToolBar from "../components/ToolBar";
 import AcademicMain from "../components/AcademicMain";
 import RoomMain from "../components/RoomMain";
+import Cookies from "../cookies";
 
 export default {
   name: "home",
@@ -25,6 +26,10 @@ export default {
   },
   beforeCreate() {
     this.$store.dispatch("setInitialValue");
+    // set schedule status from cookies
+    let scheduleStatus = Cookies.getCookie("scheduleStatus");
+    if (scheduleStatus)
+      this.$store.dispatch("setScheduleStatus", scheduleStatus);
   },
   computed: {
     scheduleStatus: function() {
