@@ -69,6 +69,7 @@ export default {
 				groups: course[index].groups
 			});
 			this.$store.dispatch("setCourses", course);
+			Cookies.setCookie("courses", JSON.stringify(course))  // save checked active groups to cookies
 		},
 		changeActiveGroups(index, groupIndex) {
 			let course = this.$store.getters.getCourses;
@@ -90,6 +91,7 @@ export default {
 				isActive: !this.floors[index].isActive,
 				rooms: this.floors[index].rooms
 			});
+			Cookies.setCookie("floors", JSON.stringify(this.floors));
     },
     openFullscreen() {
       var elems = document.getElementsByClassName("fullscreen");

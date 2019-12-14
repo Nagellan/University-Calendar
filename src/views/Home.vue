@@ -38,8 +38,10 @@ export default {
     let daysStatuses = Cookies.getCookie("daysStatuses");
     if (daysStatuses)
       this.$store.dispatch("setDaysStatuses", JSON.parse(daysStatuses));
-    // TODO: set active courses
-    // TODO: set active floors
+    // set active floors
+    let floors = Cookies.getCookie("floors");
+    if (floors)
+      this.$store.dispatch("setFloors", JSON.parse(floors));
   },
   computed: {
     scheduleStatus: function() {

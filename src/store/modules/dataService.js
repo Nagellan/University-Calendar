@@ -272,6 +272,9 @@ const mutations = {
     }
 
     state.courses = courses;
+  },
+  setFloors: (state, payload) => {
+    state.floors = payload;
   }
 };
 
@@ -290,6 +293,9 @@ const actions = {
   },
   setScheduleStatus: (context, payload) => {
     context.commit("setScheduleStatus", payload);
+  },
+  setFloors: (context, payload) => {
+    context.commit("setFloors", payload);
   },
   setInitialValue: async context => {
     await AXIOS.get("api/course/").then(response => {
