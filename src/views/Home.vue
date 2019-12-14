@@ -34,6 +34,13 @@ export default {
     let roomActive = Cookies.getCookie("roomActive");
     if (roomActive)
       this.$store.dispatch("setActiveRoom", +roomActive);
+    // TODO: set checked days
+    let daysStatuses = Cookies.getCookie("daysStatuses");
+    if (daysStatuses)
+      this.$store.dispatch("setDaysStatuses", JSON.parse(daysStatuses));
+    // TODO: set chosen groups
+    // TODO: set active courses
+    // TODO: set active floors
   },
   computed: {
     scheduleStatus: function() {

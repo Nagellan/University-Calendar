@@ -60,6 +60,8 @@
 </template>
 
 <script>
+import Cookies from "../../cookies";
+
 export default {
   data() {
     return {
@@ -70,6 +72,7 @@ export default {
     changeStatus(num) {
       this.dayStatus[num].isActive = !this.dayStatus[num].isActive;
       this.$store.dispatch("setDaysStatuses", this.dayStatus);
+      Cookies.setCookie("daysStatuses", JSON.stringify(this.dayStatus));
     }
   }
 };
