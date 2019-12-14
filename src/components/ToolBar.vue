@@ -77,6 +77,7 @@ export default {
 				isActive: !course[index].groups[groupIndex].isActive
 			});
 			this.$store.dispatch("setCourses", course);
+			Cookies.setCookie("courses", JSON.stringify(course))  // save checked active groups to cookies
 		},
 		changeActiveRoom(num) {
 			this.roomActive = num;

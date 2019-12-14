@@ -72,7 +72,7 @@ export default {
     changeStatus(num) {
       this.dayStatus[num].isActive = !this.dayStatus[num].isActive;
       this.$store.dispatch("setDaysStatuses", this.dayStatus);
-      Cookies.setCookie("daysStatuses", JSON.stringify(this.dayStatus));
+      Cookies.setCookie("daysStatuses", JSON.stringify(this.dayStatus));  // set checked days to cookies
     }
   }
 };

@@ -1,4 +1,5 @@
 import axios from "axios";
+import Cookies from "../../cookies";
 
 const AXIOS = axios.create({
   baseURL: "http://10.90.136.15/",
@@ -250,19 +251,24 @@ const mutations = {
   setInitialCourses(state, payload) {
     let courses = [];
 
-    for (let i = 0; i < payload.length; i++) {
-      let groups = [];
-      for (let j = 0; j < payload[i].groups.length; j++)
-        groups.push({
-          name: payload[i].groups[j],
-          isActive: i === 0
+    // if there're cookies with groups, set them instead of initial data
+    if (Cookies.getCookie("courses"))
+      courses = JSON.parse(Cookies.getCookie("courses"));
+    else {
+      for (let i = 0; i < payload.length; i++) {
+        let groups = [];
+        for (let j = 0; j < payload[i].groups.length; j++)
+          groups.push({
+            name: payload[i].groups[j],
+            isActive: i === 0
+          });
+  
+        courses.push({
+          name: payload[i].name,
+          isActive: true,
+          groups: groups
         });
-
-      courses.push({
-        name: payload[i].name,
-        isActive: true,
-        groups: groups
-      });
+      }
     }
 
     state.courses = courses;
