@@ -29,7 +29,11 @@ export default {
     // set schedule status from cookies
     let scheduleStatus = Cookies.getCookie("scheduleStatus");
     if (scheduleStatus)
-      this.$store.dispatch("setScheduleStatus", scheduleStatus);
+      this.$store.dispatch("setScheduleStatus", +scheduleStatus);
+    // set active room from cookies
+    let roomActive = Cookies.getCookie("roomActive");
+    if (roomActive)
+      this.$store.dispatch("setActiveRoom", +roomActive);
   },
   computed: {
     scheduleStatus: function() {

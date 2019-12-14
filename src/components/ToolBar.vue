@@ -51,6 +51,7 @@
 
 <script>
 import Days from "./additional components/Days";
+import Cookies from "../cookies";
 
 export default {
 	data() {
@@ -80,6 +81,7 @@ export default {
 		changeActiveRoom(num) {
 			this.roomActive = num;
 			this.$store.dispatch("setActiveRoom", num);
+			Cookies.setCookie("roomActive", num)  // save current active room to cookies
 		},
 		changeActiveFloor(index) {
 			this.floors.splice(index, 1, {

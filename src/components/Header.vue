@@ -86,7 +86,7 @@ export default {
     switchSchType(schStatus) {
       this.$store.dispatch("setScheduleStatus", schStatus);
       this.scheduleStatus = schStatus;
-      Cookies.setCookie("scheduleStatus", schStatus);
+      Cookies.setCookie("scheduleStatus", schStatus); // save current schedule status to cookies
     },
     changeStatusToolBar() {
       this.screenSizeStatus = +!this.screenSizeStatus;
