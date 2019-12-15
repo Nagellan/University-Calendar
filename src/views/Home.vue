@@ -34,10 +34,17 @@ export default {
     if (scheduleStatus)
       this.$store.dispatch("setScheduleStatus", +scheduleStatus);
 
-    // set active room from cookies
-    let roomActive = Cookies.getCookie("roomActive");
-    if (roomActive)
-      this.$store.dispatch("setActiveRoom", +roomActive);
+    // set active room
+    let roomActive = +url.searchParams.get("room");
+    if (roomActive && !Number.isNaN(roomActive)) {
+      // from url parameters
+      this.$store.dispatch("setActiveRoom", roomActive);
+    } else {
+      // from cookies, otherwise, if they're specified
+      let roomActive = Cookies.getCookie("roomActive");
+      if (roomActive)
+        this.$store.dispatch("setActiveRoom", +roomActive);
+    }
     
     // set checked days
     if (url.searchParams.get("week")) {
