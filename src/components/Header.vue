@@ -47,6 +47,8 @@
 </template>
 
 <script>
+import Cookies from "../cookies";
+
 export default {
   data() {
     return {
@@ -84,6 +86,7 @@ export default {
     switchSchType(schStatus) {
       this.$store.dispatch("setScheduleStatus", schStatus);
       this.scheduleStatus = schStatus;
+      Cookies.setCookie("scheduleStatus", schStatus); // save current schedule status to cookies
     },
     changeStatusToolBar() {
       this.screenSizeStatus = +!this.screenSizeStatus;

@@ -14,6 +14,7 @@ import Header from "../components/Header";
 import ToolBar from "../components/ToolBar";
 import AcademicMain from "../components/AcademicMain";
 import RoomMain from "../components/RoomMain";
+import Cookies from "../cookies";
 
 export default {
   name: "home",
@@ -25,6 +26,22 @@ export default {
   },
   beforeCreate() {
     this.$store.dispatch("setInitialValue");
+    // set schedule status from cookies
+    let scheduleStatus = Cookies.getCookie("scheduleStatus");
+    if (scheduleStatus)
+      this.$store.dispatch("setScheduleStatus", +scheduleStatus);
+    // set active room from cookies
+    let roomActive = Cookies.getCookie("roomActive");
+    if (roomActive)
+      this.$store.dispatch("setActiveRoom", +roomActive);
+    // set checked days
+    let daysStatuses = Cookies.getCookie("daysStatuses");
+    if (daysStatuses)
+      this.$store.dispatch("setDaysStatuses", JSON.parse(daysStatuses));
+    // set active floors
+    let floors = Cookies.getCookie("floors");
+    if (floors)
+      this.$store.dispatch("setFloors", JSON.parse(floors));
   },
   computed: {
     scheduleStatus: function() {
