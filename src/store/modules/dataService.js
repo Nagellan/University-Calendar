@@ -155,8 +155,8 @@ const mutations = {
   setCourses: (state, payload) => {
     state.courses = payload;
   },
-  setToolBarStatus: state => {
-    state.statusToolBar = !state.statusToolBar;
+  setToolBarStatus: (state, payload) => {
+    state.statusToolBar = payload;
   },
   setScheduleStatus: (state, payload) => {
     state.scheduleStatus = payload;
@@ -288,8 +288,8 @@ const actions = {
   setCourses: (context, payload) => {
     context.commit("setCourses", payload);
   },
-  setToolBarStatus: context => {
-    context.commit("setToolBarStatus");
+  setToolBarStatus: (context, payload) => {
+    context.commit("setToolBarStatus", payload);
   },
   setScheduleStatus: (context, payload) => {
     context.commit("setScheduleStatus", payload);

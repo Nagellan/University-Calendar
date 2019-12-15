@@ -42,6 +42,10 @@ export default {
     let floors = Cookies.getCookie("floors");
     if (floors)
       this.$store.dispatch("setFloors", JSON.parse(floors));
+    // set toolbar state
+    let toolbarStatus = Cookies.getCookie("toolbarStatus");
+    if (toolbarStatus !== undefined)
+      this.$store.dispatch("setToolBarStatus", toolbarStatus == "true");
   },
   computed: {
     scheduleStatus: function() {
