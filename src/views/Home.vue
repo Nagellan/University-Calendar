@@ -29,10 +29,17 @@ export default {
 
     this.$store.dispatch("setInitialValue");
 
-    // set schedule status from cookies
-    let scheduleStatus = Cookies.getCookie("scheduleStatus");
-    if (scheduleStatus)
-      this.$store.dispatch("setScheduleStatus", +scheduleStatus);
+    // set schedule status
+    let scheduleStatus = url.searchParams.get("schedule");
+    if (scheduleStatus && (scheduleStatus == "Room" || scheduleStatus == "Academic")) {
+      // from url parameters
+      this.$store.dispatch("setScheduleStatus", scheduleStatus == "Room" ? 1 : 0);
+    } else {
+      // from cookies, otherwise, if they're specified
+      let scheduleStatus = Cookies.getCookie("scheduleStatus");
+      if (scheduleStatus)
+        this.$store.dispatch("setScheduleStatus", +scheduleStatus);
+    }
 
     // set active room
     let roomActive = +url.searchParams.get("room");
