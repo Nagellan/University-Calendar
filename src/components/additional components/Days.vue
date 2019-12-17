@@ -70,9 +70,14 @@ export default {
   },
   methods: {
     changeStatus(num) {
+      let url = new URL(window.location.href);
       this.dayStatus[num].isActive = !this.dayStatus[num].isActive;
       this.$store.dispatch("setDaysStatuses", this.dayStatus);
       Cookies.setCookie("daysStatuses", JSON.stringify(this.dayStatus));  // set checked days to cookies
+      // change url parameters
+      let weekDays = this.dayStatus.reduce((prev, day) => day.isActive ? prev + day.name.slice(0, 3) : prev, "");
+      url.searchParams.set("week", weekDays);
+      window.history.replaceState("", "", url.search)
     }
   }
 };

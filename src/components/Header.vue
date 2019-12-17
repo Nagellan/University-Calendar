@@ -77,6 +77,10 @@ export default {
       this.$store.dispatch("setScheduleStatus", schStatus);
       this.scheduleStatus = schStatus;
       Cookies.setCookie("scheduleStatus", schStatus); // save current schedule status to cookies
+      // change url parameters
+      let url = new URL(window.location.href);
+      url.searchParams.set("schedule", schStatus ? "Room" : "Academic");
+      window.history.replaceState("", "", url.search)
     },
     changeStatusToolBar() {
       this.$store.dispatch("setToolBarStatus", !this.toolbarStatus);

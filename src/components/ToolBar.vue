@@ -84,6 +84,10 @@ export default {
 			this.roomActive = num;
 			this.$store.dispatch("setActiveRoom", num);
 			Cookies.setCookie("roomActive", num)  // save current active room to cookies
+			// change url parameters
+      let url = new URL(window.location.href);
+      url.searchParams.set("room", num);
+      window.history.replaceState("", "", url.search)
 		},
 		changeActiveFloor(index) {
 			this.floors.splice(index, 1, {
