@@ -75,7 +75,7 @@ const state = {
     {
       floor: 1,
       isActive: true,
-      rooms: [101, 102, 103, 104, 105, 106, 107, 108]
+      rooms: [101, 102, 103, 104, 105, 106, 107, 108, 111]
     },
     {
       floor: 2,
@@ -109,6 +109,11 @@ const state = {
         320,
         321
       ]
+    },
+    {
+      floor: 4,
+      isActive: true,
+      rooms: [421, 422, 425, 452]
     }
   ],
   schedule: [],
