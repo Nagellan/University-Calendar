@@ -40,6 +40,7 @@
 								class="cell"
 								:key="day.name"
 								v-if="day.isActive"
+								:style="[ isNow(day.name, timeSlot.startTime, timeSlot.endTime) ? {'boxShadow': 'rgba(141, 59, 229, 0.4) 0px 0px 2vh 0px', 'border-radius': '1.2vh'} : {} ]"
 							>
 							<template v-if="getEventData(timeSlot.events, day.name, 'name') != ''">
 								<div class="name-row"> {{ getEventData(timeSlot.events, day.name, "name") }} </div>
@@ -75,6 +76,12 @@ export default {
 		getEventData: function(events, dayName, dataType) {
 			let event = events.filter(event => event.day == dayName)[0];		
 			return event === undefined ? "" : event[dataType];
+		},
+		isNow(dayName, startTime, endTime) {
+			let today = new Date();
+			let nowTime = today.getHours() + ":" + today.getMinutes();
+			return today.getDay() == this.daysStatuses.map(day => day.name).indexOf(dayName) + 1 &&
+				nowTime >= startTime && nowTime <= endTime;
 		}
 	},
 	computed: {
