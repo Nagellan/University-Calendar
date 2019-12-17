@@ -2,7 +2,7 @@ import axios from "axios";
 import Cookies from "../../cookies";
 
 const AXIOS = axios.create({
-  baseURL: "http://10.90.136.15/",
+  baseURL: "https://schedule.innopolis.university/",
   headers: {
     "Content-Type": "application/json; charset=UTF-8"
   }
