@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import dataService from "./modules/dataService";
+import dataService from "./modules/dataService.js";
 
 Vue.use(Vuex);
 

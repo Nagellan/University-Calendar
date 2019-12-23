@@ -10,21 +10,26 @@
     <div class="right-nav-bar">
       <div class="schedule-type" @click="activate()">
         {{ this.scheduleTypes[scheduleStatus] }}
-				<div class="sch-drop-down" :class="{'active' : this.dropDownIsActive}">
-					<div v-for="(schType, index) in scheduleTypes" :key="schType" @click="switchSchType(index)">
-						<template v-if="index != scheduleStatus">
-							{{ schType }}
-						</template>
-					</div>
-				</div>
+        <span class="room-number" v-if="scheduleStatus == 1"> {{ activeRoom }} </span>
+        <div class="sch-drop-down" :class="{ active: this.dropDownIsActive }">
+          <div
+            v-for="(schType, index) in scheduleTypes"
+            :key="schType"
+            @click="switchSchType(index)"
+          >
+            <template v-if="index != scheduleStatus">
+              {{ schType }}
+            </template>
+          </div>
+        </div>
       </div>
 
       <div class="buttons">
-        <button class="time-button" v-if="scheduleStatus == 1">
+        <!-- <button class="time-button" v-if="scheduleStatus == 1">
           <img class="time-icon" src="..\assets\images\clock_icon.svg" />
-        </button>
+        </button> -->
 
-        <button class="full-screen-button">
+        <button class="full-screen-button" @click="openFullscreen">
           <img
             class="full-screen-icon"
             src="..\assets\images\fullscreen_icon.png"
@@ -42,26 +47,56 @@
 </template>
 
 <script>
+import Cookies from "../cookies";
+
 export default {
   data() {
     return {
-			statusToolBar: this.$store.getters.getToolBarStatus,
-			scheduleStatus: this.$store.getters.getScheduleStatus,
-			scheduleTypes: this.$store.getters.getScheduleTypes,
-			dropDownIsActive: false
+      scheduleStatus: this.$store.getters.getScheduleStatus,
+      scheduleTypes: this.$store.getters.getScheduleTypes,
+      dropDownIsActive: false,
     };
   },
   methods: {
-		switchSchType(schStatus) {
-			this.$store.dispatch("setScheduleStatus", schStatus);
-			this.scheduleStatus = schStatus;
-		},
+    openFullscreen() {
+      var elems = document.getElementsByClassName("fullscreen");
+
+      for (let el of elems) {
+        if (el.requestFullscreen) {
+          el.requestFullscreen();
+        } else if (el.mozRequestFullScreen) {
+          el.mozRequestFullScreen();
+        } else if (el.webkitRequestFullscreen) {
+          el.webkitRequestFullscreen();
+        } else if (el.msRequestFullscreen) {
+          el.msRequestFullscreen();
+        }
+      }
+    },
+    switchSchType(schStatus) {
+      this.$store.dispatch("setScheduleStatus", schStatus);
+      this.scheduleStatus = schStatus;
+      Cookies.setCookie("scheduleStatus", schStatus); // save current schedule status to cookies
+      // change url parameters
+      let url = new URL(window.location.href);
+      url.searchParams.set("schedule", schStatus ? "Room" : "Academic");
+      window.history.replaceState("", "", url.search)
+    },
     changeStatusToolBar() {
-      this.$store.dispatch("setToolBarStatus", !this.statusToolBar);
+      this.$store.dispatch("setToolBarStatus", !this.toolbarStatus);
+      Cookies.setCookie("toolbarStatus", this.toolbarStatus);
 		},
 		activate() {
 			this.dropDownIsActive = !this.dropDownIsActive;
-		}
+    }
+  },
+  computed: {
+		activeRoom: function() {
+			return this.$store.getters.getActiveRoom;
+    },
+    toolbarStatus: function() {
+      return this.$store.getters.getToolBarStatus;
+    }
   }
 };
 </script>

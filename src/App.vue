@@ -16,6 +16,7 @@ export default {
 
 <style lang="scss">
 @import "./assets/css/font.css";
+@import "./assets/css/mobile-style.css";
 
 * {
   margin: 0;

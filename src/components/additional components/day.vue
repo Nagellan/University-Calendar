@@ -19,7 +19,7 @@
 					<div class="cells-wrapper">
 						<template v-for="group in groups">
 							<transition
-								name="group"
+								name="cell"
 								:key="timeSlot.startTime + '-' + group.name"
 							>
 								<div
@@ -56,20 +56,15 @@ export default {
 	},
 	computed: {
 		todaySchedule: function() {
-			return this.schedule
+			return this.$store.getters.getSchedule
 				.filter(day => day.name == this.day.name)
 				.map(day => day.timeSlots)[0] || [];
 		}
 	},
-  data() {
-		return {
-			schedule: this.$store.getters.getSchedule
-		};
-  },
   props: ['day', 'groups']
 };
 </script>
 
 <style lang="scss" scoped>
-@import "../../assets/css/main-style.css";
+@import "../../assets/css/academic-main-style.css";
 </style>

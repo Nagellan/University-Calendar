@@ -1,113 +1,132 @@
 <template>
-<transition name="toolbar">
-  <aside v-if="statusToolBar === true">
-    <div>
-    <div class="item label">Days</div>
-    <Days />
-    <div v-if="scheduleStatus === 1" class="item label">Rooms</div>
-    <div
-      v-if="scheduleStatus === 1"
-      class="list"
-      v-for="(item, index) in floors"
-    >
-      <div class="dropdown" v-bind:class="{ active: item.isActive }">
-        <div class="label-container" v-on:click="changeActiveFloor(index)">
-          <div class="label2">{{ item.floor }}00s</div>
-          <div class="triangle" v-bind:class="{ active: item.isActive }"></div>
-        </div>
+	<transition name="toolbar">
+		<aside v-if="statusToolBar === true">
+      <div class="logo"></div>
+			<div class="toolbar-scroll">
+				<div class="item label">Days</div>
+				<Days />
+				<div v-if="scheduleStatus === 1" class="item label">Rooms</div>
+				<div v-if="scheduleStatus === 1" class="list" v-for="(item, index) in floors">
+					<div class="dropdown" v-bind:class="{ active: item.isActive }">
+						<div class="label-container" v-on:click="changeActiveFloor(index)">
+							<div class="label2">{{ item.floor }}00s</div>
+							<div class="triangle" v-bind:class="{ active: item.isActive }"></div>
+						</div>
 
-        <div class="room-container">
-          <div
-            v-for="roomItem in item.rooms"
-            v-bind:class="{ activeRoom: roomActive === roomItem }"
-            v-on:click="changeActiveRoom(roomItem)"
-          >{{ roomItem }}
-          </div>
-        </div>
-      </div>
-    </div>
+						<div class="room-container">
+							<div
+								v-for="roomItem in item.rooms"
+								v-bind:class="{ activeRoom: roomActive === roomItem }"
+								v-on:click="changeActiveRoom(roomItem)"
+							>{{ roomItem }}</div>
+						</div>
+					</div>
+				</div>
 
-    <div v-if="scheduleStatus === 0" class="item label">Courses</div>
-    <div
-      v-if="scheduleStatus === 0"
-      class="list"
-      v-for="(item, index) in courses"
-    >
-      <div class="dropdown" v-bind:class="{ active: item.isActive }">
-        <div class="label-container" v-on:click="changeActiveCourses(index)">
-          <div class="label2">{{ item.name }}</div>
-          <div class="triangle" v-bind:class="{ active: item.isActive }"></div>
-        </div>
-        <div
-          v-for="(groupItem, groupIndex) in item.groups"
-        >
-          <div style="display: flex; flex-direction: row">
-            <input
-              type="checkbox"
-              class="option-input checkbox"
-              v-model="groupItem.isActive"
-              v-on:click="changeActiveGroups(index, groupIndex)"
-            />
-            <div class="group-label">Group {{ groupItem.name }}</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    </div>
-  </aside>
-</transition>
+				<div v-if="scheduleStatus === 0" class="item label">Courses</div>
+				<div v-if="scheduleStatus === 0" class="list" v-for="(item, index) in courseStatus">
+					<div class="dropdown" v-bind:class="{ active: item.isActive }">
+						<div class="label-container" v-on:click="changeActiveCourses(index)">
+							<div class="label2">{{ item.name }}</div>
+							<div class="triangle" v-bind:class="{ active: item.isActive }"></div>
+						</div>
+						<div v-for="(groupItem, groupIndex) in item.groups">
+							<div style="display: flex; flex-direction: row">
+								<input
+									type="checkbox"
+									class="option-input checkbox"
+									v-model="groupItem.isActive"
+									v-on:click="changeActiveGroups(index, groupIndex)"
+								/>
+								<div class="group-label">Group {{ groupItem.name }}</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+      <div class="fullscreen-btn" @click="openFullscreen">Go to fullscreen</div>
+		</aside>
+	</transition>
 </template>
 
 <script>
 import Days from "./additional components/Days";
+import Cookies from "../cookies";
 
 export default {
-  data() {
-    return {
-      courses: this.$store.getters.getCourses,
-      floors: this.$store.getters.getFloors,
-      roomActive: this.$store.getters.getActiveRoom,
-    };
-  },
-  methods: {
-    changeActiveCourses(index) {
-      this.courses.splice(index, 1, {
-        name: this.courses[index].name,
-        isActive: !this.courses[index].isActive,
-        groups: this.courses[index].groups
-      });
-      this.$store.dispatch("setCourses", this.courses);
+	data() {
+		return {
+			floors: this.$store.getters.getFloors,
+			roomActive: this.$store.getters.getActiveRoom
+		};
+	},
+	methods: {
+		changeActiveCourses(index) {
+			let course = this.$store.getters.getCourses;
+			course.splice(index, 1, {
+				name: course[index].name,
+				isActive: !course[index].isActive,
+				groups: course[index].groups
+			});
+			this.$store.dispatch("setCourses", course);
+			Cookies.setCookie("courses", JSON.stringify(course))  // save checked active groups to cookies
+		},
+		changeActiveGroups(index, groupIndex) {
+			let course = this.$store.getters.getCourses;
+			course[index].groups.splice(groupIndex, 1, {
+				name: course[index].groups[groupIndex].name,
+				isActive: !course[index].groups[groupIndex].isActive
+			});
+			this.$store.dispatch("setCourses", course);
+			Cookies.setCookie("courses", JSON.stringify(course))  // save checked active groups to cookies
+		},
+		changeActiveRoom(num) {
+			this.roomActive = num;
+			this.$store.dispatch("setActiveRoom", num);
+			Cookies.setCookie("roomActive", num)  // save current active room to cookies
+			// change url parameters
+      let url = new URL(window.location.href);
+      url.searchParams.set("room", num);
+      window.history.replaceState("", "", url.search)
+		},
+		changeActiveFloor(index) {
+			this.floors.splice(index, 1, {
+				floor: this.floors[index].floor,
+				isActive: !this.floors[index].isActive,
+				rooms: this.floors[index].rooms
+			});
+			Cookies.setCookie("floors", JSON.stringify(this.floors));
     },
-    changeActiveGroups(index, groupIndex) {
-      this.courses[index].groups.splice(groupIndex, 1, {
-        name: this.courses[index].groups[groupIndex].name,
-        isActive: !this.courses[index].groups[groupIndex].isActive
-      });
-      this.$store.dispatch("setCourses", this.courses);
-    },
-    changeActiveRoom(num) {
-      this.roomActive = num;
-      this.$store.dispatch("setActiveRoom", num);
-    },
-    changeActiveFloor(index) {
-      this.floors.splice(index, 1, {
-        floor: this.floors[index].floor,
-        isActive: !this.floors[index].isActive,
-        rooms: this.floors[index].rooms
-      });
+    openFullscreen() {
+      var elems = document.getElementsByClassName("fullscreen");
+
+      for (let el of elems) {
+        if (el.requestFullscreen) {
+          el.requestFullscreen();
+        } else if (el.mozRequestFullScreen) {
+          el.mozRequestFullScreen();
+        } else if (el.webkitRequestFullscreen) {
+          el.webkitRequestFullscreen();
+        } else if (el.msRequestFullscreen) {
+          el.msRequestFullscreen();
+        }
+      }
     }
-  },
-  computed: {
-    statusToolBar: function() {
-      return this.$store.getters.getToolBarStatus;
-    },
-    scheduleStatus: function() {
-      return this.$store.getters.getScheduleStatus;
-    }
-  },
-  components: {
-    Days
-  }
+	},
+	computed: {
+		statusToolBar: function() {
+			return this.$store.getters.getToolBarStatus;
+		},
+		scheduleStatus: function() {
+			return this.$store.getters.getScheduleStatus;
+		},
+		courseStatus: function() {
+			return this.$store.getters.getCourses;
+		}
+	},
+	components: {
+		Days
+	}
 };
 </script>
 
